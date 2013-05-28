@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+  <head>
+  </head>
+  <body>
+    <style>
+      @-webkit-keyframes rotate {
+         0% {   -webkit-transform: rotateY(0deg); }
+         100% { -webkit-transform: rotateY(360deg); }
+      }
+
+      #container {
+        -webkit-perspective: 1000px;
+        -webkit-perspective-origin: 50% 50%;
+        padding: 100px;
+        width: 300px;
+        height: 300px;
+      }
+
+      #planes {
+        position: relative;
+        width: 300px;
+        height: 300px;
+      }
+        .preserve #planes {
+          -webkit-transform-style: preserve-3d;
+        }
+        .rotate #planes {
+          -webkit-animation: rotate 18s linear infinite;
+        }
+
+      #planes > div {
+        position: absolute;
+        opacity: 0.5;
+        width: 300px;
+        height: 300px;
+        -webkit-transition: all 600ms ease-in-out;
+      }
+        .cube #planes > div {
+          top: 0;
+          left: 0;
+        }
+
+      #plane {
+        background: salmon;
+        top: 0;
+        left: 0;
+      }
+      .cube #plane { -webkit-transform: translateZ(-150px); }
+
+      #plane2 {
+        background: orange;
+        top: 0;
+        left: 300px; }
+      .cube #plane2 {
+        -webkit-transform: rotateY(90deg) translateZ(150px);
+      }
+
+      #plane3 {
+        top: 300px;
+        left: 0;
+        background: blue; }
+      .cube #plane3 {
+        -webkit-transform: rotateY(90deg) translateZ(-150px);
+      }
+
+      #plane4 {
+        top: 300px;
+        left: 300px;
+        background: green; }
+      .cube #plane4 {
+        -webkit-transform: translateZ(150px);
+      }
+    </style>
+    <button id="toggle">Make Cube</button>
+    <button id="rotate">Start Rotation</button>
+    <button id="preserve">Preserve 3D</button>
+    <div id="container">
+      <div id="planes">
+        <div id="plane"></div>
+        <div id="plane2"></div>
+        <div id="plane3"></div>
+        <div id="plane4"></div>
+      </div>
+    </div>
+    <script>
+      var c = document.getElementById('container');
+      var toggle = document.getElementById('toggle');
+      var rotate = document.getElementById('rotate');
+      var preserve = document.getElementById('preserve');
+
+      function update() {
+      }
+
+      toggle.addEventListener('click', function() {
+        document.body.classList.toggle('cube');
+      }, false);
+
+      rotate.addEventListener('click', function() {
+        document.body.classList.toggle('rotate');
+      }, false);
+
+      preserve.addEventListener('click', function() {
+        document.body.classList.toggle('preserve');
+      }, false);
+    </script>
+  </body>
+</html>

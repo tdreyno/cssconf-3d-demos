@@ -1,0 +1,362 @@
+@-webkit-keyframes rotate-clipped-4 {
+  /* line 13, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  from {
+    -webkit-transform: translateZ(-160.0px) rotateY(0deg); }
+
+  /* line 16, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  20% {
+    -webkit-transform: translateZ(-240.0px) rotateY(-18deg); }
+
+  /* line 19, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  50% {
+    -webkit-transform: translateZ(-248.0px) rotateY(-45deg); }
+
+  /* line 22, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  80% {
+    -webkit-transform: translateZ(-240.0px) rotateY(-72deg); }
+
+  /* line 25, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  to {
+    -webkit-transform: translateZ(-160.0px) rotateY(-90deg); } }
+
+@-webkit-keyframes rotate-clipped-back-4 {
+  /* line 31, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  to {
+    -webkit-transform: translateZ(-160.0px) rotateY(0deg); }
+
+  /* line 34, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  80% {
+    -webkit-transform: translateZ(-240.0px) rotateY(-18deg); }
+
+  /* line 37, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  50% {
+    -webkit-transform: translateZ(-248.0px) rotateY(-45deg); }
+
+  /* line 40, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  20% {
+    -webkit-transform: translateZ(-240.0px) rotateY(-72deg); }
+
+  /* line 43, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  from {
+    -webkit-transform: translateZ(-160.0px) rotateY(-90deg); } }
+
+@-webkit-keyframes orotate-clipped-4 {
+  /* line 49, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  from {
+    -webkit-transform: translateY(50px) translateY(-70.0px) rotateZ(0deg); }
+
+  /* line 52, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  20% {
+    -webkit-transform: translateY(50px) translateY(-105.0px) rotateZ(18deg); }
+
+  /* line 55, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  50% {
+    -webkit-transform: translateY(50px) translateY(-108.5px) rotateZ(45deg); }
+
+  /* line 58, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  80% {
+    -webkit-transform: translateY(50px) translateY(-105.0px) rotateZ(72deg); }
+
+  /* line 61, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  to {
+    -webkit-transform: translateY(50px) translateY(-70.0px) rotateZ(90deg); } }
+
+@-webkit-keyframes orotate-clipped-back-4 {
+  /* line 67, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  to {
+    -webkit-transform: translateY(50px) translateY(-70.0px) rotateZ(0deg); }
+
+  /* line 70, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  80% {
+    -webkit-transform: translateY(50px) translateY(-105.0px) rotateZ(18deg); }
+
+  /* line 73, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  50% {
+    -webkit-transform: translateY(50px) translateY(-108.5px) rotateZ(45deg); }
+
+  /* line 76, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  20% {
+    -webkit-transform: translateY(50px) translateY(-105.0px) rotateZ(72deg); }
+
+  /* line 79, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  from {
+    -webkit-transform: translateY(50px) translateY(-70.0px) rotateZ(90deg); } }
+
+/* line 85, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides4.flipped #parent {
+  -webkit-animation-name: rotate-clipped-4;
+  -webkit-animation-duration: 1000ms;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards; }
+/* line 91, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides4 #parent {
+  -webkit-animation-name: rotate-clipped-back-4;
+  -webkit-animation-duration: 1000ms;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards; }
+/* line 97, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides4 #first {
+  -webkit-transform: rotateY(0deg) translateZ(160.0px); }
+/* line 101, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides4 #second {
+  -webkit-transform: rotateY(90deg) translateZ(160.0px); }
+/* line 105, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides4.flipped #owrapper {
+  -webkit-animation-name: orotate-clipped-4;
+  -webkit-animation-duration: 1000ms;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards; }
+/* line 111, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides4 #owrapper {
+  -webkit-animation-name: orotate-clipped-back-4;
+  -webkit-animation-duration: 1000ms;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards; }
+/* line 117, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides4 #firstflat {
+  -webkit-transform: rotateZ(0deg) translateY(56.0px); }
+/* line 121, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides4 #secondflat {
+  -webkit-transform: rotateZ(-90deg) translateY(56.0px); }
+
+@-webkit-keyframes rotate-clipped-5 {
+  /* line 13, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  from {
+    -webkit-transform: translateZ(-220.22111px) rotateY(0deg); }
+
+  /* line 16, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  20% {
+    -webkit-transform: translateZ(-308.30955px) rotateY(-14.4deg); }
+
+  /* line 19, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  50% {
+    -webkit-transform: translateZ(-319.32061px) rotateY(-36deg); }
+
+  /* line 22, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  80% {
+    -webkit-transform: translateZ(-308.30955px) rotateY(-57.6deg); }
+
+  /* line 25, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  to {
+    -webkit-transform: translateZ(-220.22111px) rotateY(-72deg); } }
+
+@-webkit-keyframes rotate-clipped-back-5 {
+  /* line 31, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  to {
+    -webkit-transform: translateZ(-220.22111px) rotateY(0deg); }
+
+  /* line 34, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  80% {
+    -webkit-transform: translateZ(-308.30955px) rotateY(-14.4deg); }
+
+  /* line 37, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  50% {
+    -webkit-transform: translateZ(-319.32061px) rotateY(-36deg); }
+
+  /* line 40, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  20% {
+    -webkit-transform: translateZ(-308.30955px) rotateY(-57.6deg); }
+
+  /* line 43, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  from {
+    -webkit-transform: translateZ(-220.22111px) rotateY(-72deg); } }
+
+@-webkit-keyframes orotate-clipped-5 {
+  /* line 49, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  from {
+    -webkit-transform: translateY(50px) translateY(-96.34673px) rotateZ(0deg); }
+
+  /* line 52, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  20% {
+    -webkit-transform: translateY(50px) translateY(-134.88543px) rotateZ(14.4deg); }
+
+  /* line 55, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  50% {
+    -webkit-transform: translateY(50px) translateY(-139.70276px) rotateZ(36deg); }
+
+  /* line 58, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  80% {
+    -webkit-transform: translateY(50px) translateY(-134.88543px) rotateZ(57.6deg); }
+
+  /* line 61, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  to {
+    -webkit-transform: translateY(50px) translateY(-96.34673px) rotateZ(72deg); } }
+
+@-webkit-keyframes orotate-clipped-back-5 {
+  /* line 67, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  to {
+    -webkit-transform: translateY(50px) translateY(-96.34673px) rotateZ(0deg); }
+
+  /* line 70, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  80% {
+    -webkit-transform: translateY(50px) translateY(-134.88543px) rotateZ(14.4deg); }
+
+  /* line 73, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  50% {
+    -webkit-transform: translateY(50px) translateY(-139.70276px) rotateZ(36deg); }
+
+  /* line 76, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  20% {
+    -webkit-transform: translateY(50px) translateY(-134.88543px) rotateZ(57.6deg); }
+
+  /* line 79, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  from {
+    -webkit-transform: translateY(50px) translateY(-96.34673px) rotateZ(72deg); } }
+
+/* line 85, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides5.flipped #parent {
+  -webkit-animation-name: rotate-clipped-5;
+  -webkit-animation-duration: 1000ms;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards; }
+/* line 91, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides5 #parent {
+  -webkit-animation-name: rotate-clipped-back-5;
+  -webkit-animation-duration: 1000ms;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards; }
+/* line 97, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides5 #first {
+  -webkit-transform: rotateY(0deg) translateZ(220.22111px); }
+/* line 101, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides5 #second {
+  -webkit-transform: rotateY(72deg) translateZ(220.22111px); }
+/* line 105, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides5.flipped #owrapper {
+  -webkit-animation-name: orotate-clipped-5;
+  -webkit-animation-duration: 1000ms;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards; }
+/* line 111, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides5 #owrapper {
+  -webkit-animation-name: orotate-clipped-back-5;
+  -webkit-animation-duration: 1000ms;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards; }
+/* line 117, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides5 #firstflat {
+  -webkit-transform: rotateZ(0deg) translateY(82.34673px); }
+/* line 121, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides5 #secondflat {
+  -webkit-transform: rotateZ(-72deg) translateY(82.34673px); }
+
+@-webkit-keyframes rotate-clipped-8 {
+  /* line 13, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  from {
+    -webkit-transform: translateZ(-386.27417px) rotateY(0deg); }
+
+  /* line 16, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  20% {
+    -webkit-transform: translateZ(-482.84271px) rotateY(-9deg); }
+
+  /* line 19, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  50% {
+    -webkit-transform: translateZ(-502.15642px) rotateY(-22.5deg); }
+
+  /* line 22, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  80% {
+    -webkit-transform: translateZ(-482.84271px) rotateY(-36deg); }
+
+  /* line 25, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  to {
+    -webkit-transform: translateZ(-386.27417px) rotateY(-45deg); } }
+
+@-webkit-keyframes rotate-clipped-back-8 {
+  /* line 31, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  to {
+    -webkit-transform: translateZ(-386.27417px) rotateY(0deg); }
+
+  /* line 34, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  80% {
+    -webkit-transform: translateZ(-482.84271px) rotateY(-9deg); }
+
+  /* line 37, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  50% {
+    -webkit-transform: translateZ(-502.15642px) rotateY(-22.5deg); }
+
+  /* line 40, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  20% {
+    -webkit-transform: translateZ(-482.84271px) rotateY(-36deg); }
+
+  /* line 43, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  from {
+    -webkit-transform: translateZ(-386.27417px) rotateY(-45deg); } }
+
+@-webkit-keyframes orotate-clipped-8 {
+  /* line 49, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  from {
+    -webkit-transform: translateY(50px) translateY(-168.99495px) rotateZ(0deg); }
+
+  /* line 52, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  20% {
+    -webkit-transform: translateY(50px) translateY(-211.24369px) rotateZ(9deg); }
+
+  /* line 55, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  50% {
+    -webkit-transform: translateY(50px) translateY(-219.69343px) rotateZ(22.5deg); }
+
+  /* line 58, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  80% {
+    -webkit-transform: translateY(50px) translateY(-211.24369px) rotateZ(36deg); }
+
+  /* line 61, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  to {
+    -webkit-transform: translateY(50px) translateY(-168.99495px) rotateZ(45deg); } }
+
+@-webkit-keyframes orotate-clipped-back-8 {
+  /* line 67, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  to {
+    -webkit-transform: translateY(50px) translateY(-168.99495px) rotateZ(0deg); }
+
+  /* line 70, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  80% {
+    -webkit-transform: translateY(50px) translateY(-211.24369px) rotateZ(9deg); }
+
+  /* line 73, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  50% {
+    -webkit-transform: translateY(50px) translateY(-219.69343px) rotateZ(22.5deg); }
+
+  /* line 76, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  20% {
+    -webkit-transform: translateY(50px) translateY(-211.24369px) rotateZ(36deg); }
+
+  /* line 79, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+  from {
+    -webkit-transform: translateY(50px) translateY(-168.99495px) rotateZ(45deg); } }
+
+/* line 85, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides8.flipped #parent {
+  -webkit-animation-name: rotate-clipped-8;
+  -webkit-animation-duration: 1000ms;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards; }
+/* line 91, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides8 #parent {
+  -webkit-animation-name: rotate-clipped-back-8;
+  -webkit-animation-duration: 1000ms;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards; }
+/* line 97, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides8 #first {
+  -webkit-transform: rotateY(0deg) translateZ(386.27417px); }
+/* line 101, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides8 #second {
+  -webkit-transform: rotateY(45deg) translateZ(386.27417px); }
+/* line 105, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides8.flipped #owrapper {
+  -webkit-animation-name: orotate-clipped-8;
+  -webkit-animation-duration: 1000ms;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards; }
+/* line 111, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides8 #owrapper {
+  -webkit-animation-name: orotate-clipped-back-8;
+  -webkit-animation-duration: 1000ms;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-fill-mode: forwards; }
+/* line 117, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides8 #firstflat {
+  -webkit-transform: rotateZ(0deg) translateY(154.99495px); }
+/* line 121, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/rotate.css.scss */
+.sides8 #secondflat {
+  -webkit-transform: rotateZ(-45deg) translateY(154.99495px); }

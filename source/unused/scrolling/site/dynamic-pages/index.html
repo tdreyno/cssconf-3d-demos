@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <link href="../stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Questrial|Arvo" media="screen" rel="stylesheet" type="text/css" />
+    <title>Middleman: Dynamic Pages</title>
+  </head>
+  <body>
+
+      <header id="header">
+    <div class="container">
+      <h1><a class="logo" href="/"><img width="225" height="225" alt="Middleman" src="../images/mm-blue-w-text.svg" /></a></h1>
+      <p class="console">$ gem install middleman</p>
+      <a class="toc-nav-link icon-arrow-down" href="#toc">Menu</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav id="toc">
+      <div class="toc-block">
+  <h3>Middleman Basics</h3>
+  <ul>
+      <li><a href="/getting-started/">Getting Started</a></li>
+      <li><a href="/templates/">Templates</a></li>
+      <li><a href="/helpers/">Template Helpers</a></li>
+      <li><a href="/frontmatter/">Frontmatter</a></li>
+      <li><a href="/dynamic-pages/">Dynamic Pages</a></li>
+      <li><a href="/asset-pipeline/">Asset Pipeline</a></li>
+      <li><a href="/pretty-urls/">Pretty URLs (Directory Indexes)</a></li>
+      <li><a href="/livereload/">LiveReload</a></li>
+      <li><a href="/blogging/">Blogging</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>Advanced Features</h3>
+  <ul>
+      <li><a href="/advanced/configuration/">Configuring Your Site</a></li>
+      <li><a href="/advanced/local-data/">Local Data</a></li>
+      <li><a href="/advanced/localization/">Localization (i18n)</a></li>
+      <li><a href="/advanced/sitemap/">The Sitemap</a></li>
+      <li><a href="/advanced/rack-middleware/">Rack Middleware</a></li>
+      <li><a href="/advanced/custom/">Custom Extensions</a></li>
+      <li><a href="/advanced/file-size-optimization/">File Size Optimization</a></li>
+      <li><a href="/advanced/improving-cacheability/">Improving Cacheability</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>Community</h3>
+  <ul>
+      <li><a href="http://directory.middlemanapp.com/">Extensions</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/templates/all">Project Templates</a></li>
+      <li><a href="/community/deployment-solutions/">Deployment Solutions</a></li>
+      <li><a href="/community/built-using-middleman/">Sites Built Using Middleman</a></li>
+      <li><a href="http://forum.middlemanapp.com/" target="_blank">Community Forum</a></li>
+      <li><a href="https://github.com/middleman/middleman" target="_blank">GitHub Repository</a></li>
+  </ul>
+</div>
+    </nav>
+
+    <article id="main" role="main">
+      <h1 id="toc_0">Dynamic Pages</h1>
+
+<h2 id="toc_1">Defining proxies</h2>
+
+<p>Middleman has the ability to generate pages which do not have a one-to-one relationship with their template files. What this means is that you can have a single template which generates multiple files based on variables. To create a proxy, you use the <code>proxy</code> method in your <code>config.rb</code>, and give the path you want to create, and then the path to the template you want to use (without any templating file extensions). Here&#39;s an example <code>config.rb</code> setup:</p>
+
+<pre><code class="ruby"># Assumes the file source/about/template.html.erb exists
+[&quot;tom&quot;, &quot;dick&quot;, &quot;harry&quot;].each do |name|
+  proxy &quot;/about/#{name}.html&quot;, &quot;/about/template.html&quot;, :locals =&gt; { :person_name =&gt; name }
+end
+</code></pre>
+
+<p>When this project is built, four files will be output:</p>
+
+<ul>
+<li><code>/about/tom.html</code> (with <code>person_name</code> equalling &quot;tom&quot; in the template)</li>
+<li><code>/about/dick.html</code> (with <code>person_name</code> equalling &quot;dick&quot; in the template)</li>
+<li><code>/about/harry.html</code> (with <code>person_name</code> equalling &quot;harry&quot; in the template)</li>
+<li><code>/about/template.html</code> (with <code>person_name</code> being nil in the template)</li>
+</ul>
+
+<p>In most cases, you will not want to generate the template itself without the <code>person_name</code> variable, so you can tell Middleman to ignore it:</p>
+
+<pre><code class="ruby">[&quot;tom&quot;, &quot;dick&quot;, &quot;harry&quot;].each do |name|
+  proxy &quot;/about/#{name}.html&quot;, &quot;/about/template.html&quot;, :locals =&gt; { :person_name =&gt; name }, :ignore =&gt; true
+end
+</code></pre>
+
+<p>Now, only the <code>about/tom.html</code>, <code>about/dick.html</code> and <code>about/harry.html</code> files will be output.</p>
+
+<h2 id="toc_2">Ignoring Files</h2>
+
+<p>It is also possible to ignore arbitrary paths when building a site using the new <code>ignore</code> method in your <code>config.rb</code>:</p>
+
+<pre><code class="ruby">ignore &quot;/ignore-this-template.html&quot;
+</code></pre>
+
+<p>You can give ignore exact source paths, filename globs, or regexes.</p>
+
+    </article>
+
+    <div id="support">
+  <div class="donate">
+    <h4>Support Us</h4>
+    <p><a href="https://spb.io/s/4dXbHBorC3" target="_blank" class="sbe-button">With a Donation</a></p>
+  </div>
+
+  <div class="sponsor">
+    <h4>Sponsor</h4>
+    <a href="http://fjords.cc" target="_blank">
+      <img src="../images/fjords.jpg" />
+      <span>Fjords: Simple Middleman Hosting &amp; Preview URLs</span>
+    </a>
+  </div>
+
+  <!-- BuySellAds Zone Code -->
+  <div id="bsap_1280677" class="bsarocks bsap_989fc05e297a314a92ad3f33cef85fd4"></div>
+  <!-- End BuySellAds Zone Code -->
+</div>
+  </div>
+
+    
+    <footer id="footer">
+      <div class="container">
+        <p class="copyright">
+          &copy; 2011-2013 <a href="http://awardwinningfjords.com">Thomas Reynolds</a>.
+        </p>
+        <p class="link"><a href="https://github.com/middleman/middleman-guides/blob/master/source/dynamic-pages.html.markdown">Fork and edit this guide on Github</a></p>
+      </div>
+    </footer>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="../javascripts/highlight.pack.js" type="text/javascript"></script>
+    <script src="../javascripts/toc.js" type="text/javascript"></script>
+    <link href="../stylesheets/solarized_light.css" media="screen" rel="stylesheet" type="text/css" />
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+  </body>
+</html>

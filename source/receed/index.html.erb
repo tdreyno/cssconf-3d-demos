@@ -1,0 +1,253 @@
+<style>
+  #parent { }
+
+  #front, #behind {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 320px;
+    height: 465px;
+
+    background-size: 320px 465px;
+    background-repeat: no-repeat; }
+
+    #front h1, #behind h1 {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      position: absolute;
+      line-height: 1;
+      margin: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      text-shadow: black 0 0 6px;
+      color: white;
+      opacity: 0;
+      -webkit-transition: all 800ms ease-in-out; }
+
+      .open #front h1, .open #behind h1,
+      .open-backface #front h1, .open-backface #behind h1,
+      .overlapped #front h1, .overlapped #behind h1 {
+        opacity: 1; }
+
+    #front {
+      -webkit-transition: all 800ms ease-in-out;
+      background-image: url(../images/buster.jpg); }
+
+    #behind {
+      -webkit-transition: all 1000ms ease-in-out;
+      background-image: url(../images/buster-2.jpg); }
+
+  .intro #behind,
+  .ready #behind {
+    -webkit-transform: translateZ(-250px) translateX(0); }
+
+  .intro.toggled #front,
+  .ready.toggled #front {
+    -webkit-transform: translateX(100%); }
+
+  .intro.toggled #behind,
+  .ready.toggled #behind {
+    -webkit-transform: translateZ(0); }
+
+  .overflow #container {
+    overflow: visible; }
+  .open #behind {
+    -webkit-transform: translateZ(0) translateX(100%); }
+  .open.toggled #behind {
+    -webkit-transform: translateZ(-250px) translateX(125%); }
+</style>
+
+<div id="behind">
+  <h1>Behind</h1>
+</div>
+
+<div id="front">
+  <h1>Front</h1>
+</div>
+
+<script>
+  var stateIndex = 0;
+  var states = [
+    'intro',
+    'open overflow',
+    'open toggled overflow',
+    'ready overflow',
+    'ready',
+    'ready toggled'
+  ];
+
+  var container = document.getElementById('container');
+  container.style.opacity = 0;
+
+  document.body.className = states[stateIndex];
+  setTimeout(function() {
+    container.style.opacity = 1;
+  }, 1000);
+
+  document.addEventListener('keyup', function(e) {
+    if (e.keyCode == 37) {
+      if (stateIndex > 0) {
+        stateIndex--;
+        document.body.className = states[stateIndex];
+      }
+    } else if (e.keyCode == 39) {
+      if (stateIndex < (states.length - 1)) {
+        stateIndex++;
+        document.body.className = states[stateIndex];
+      }
+    } else {
+      return;
+    }
+    
+    e.preventDefault();
+    e.stopPropagation();
+  });
+
+  document.addEventListener('dblclick', function(e) {
+    document.body.classList.toggle('toggled');
+
+    e.preventDefault();
+    e.stopPropagation();
+  });
+</script>
+
+<% content_for :outside do %>
+  <style>
+    #code {
+      position: absolute;
+      top: 227px;
+      left: 680px;
+      right: 0; }
+      .intro #code,
+      .intro #overhead {
+        display: none; }
+
+    #overhead {
+      position: absolute;
+      top: 20px;
+      left: 680px;
+      width: 300px;
+      height: 200px;
+      border: 2px solid black; }
+      #x, #z {
+        position: absolute;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none; }
+      #x {
+        top: -20px;
+        left: 42%; }
+      #z {
+        right: -20px;
+        top: 41%; }
+      #owrapper {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0; }
+
+    #frontflat,
+    #behindflat {
+      width: 140px;
+      height: 30px;
+      font-size: 20px;
+      line-height: 30px;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      margin-top: -6px;
+      left: 50%;
+      margin-left: -70px;
+      border: 2px solid black;
+      box-sizing: border-box;
+
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      -webkit-transition: all 800ms ease-in-out; 
+    }
+
+    #frontflat {
+      background: #d9d9d9;
+      color: black;
+    }
+
+    #behindflat {
+      background: #ff9736;
+      color: black;
+    }
+
+    .ready #frontflat {
+      -webkit-transform: translateY(16px); }
+    .ready #behindflat {
+      -webkit-transform: translateY(-50px) scale(0.7); }
+    .ready.toggled #frontflat {
+      -webkit-transform: translateY(16px) translateX(146px); }
+    .ready.toggled #behindflat {
+      -webkit-transform: translateY(16px) scale(1.0); }
+    .open #frontflat {
+      -webkit-transform: translateX(-71px); }
+    .open #behindflat {
+      -webkit-transform: translateX(71px); }
+    .open.toggled #behindflat {
+      -webkit-transform: translateY(-50px) scale(0.7) translateX(100px) ; }
+
+    #code pre {
+      font-size: 16px;
+      display: none;
+      margin-top: 0;
+    }
+
+    .ready #code pre.ready-untoggled,
+    .open #code pre.open-untoggled {
+      margin-bottom: 0;
+      display: block; }
+
+    .ready.toggled #code pre.ready-untoggled {
+      display: none; }
+
+    .ready.toggled #code pre.ready-toggled {
+      display: block; }
+
+    .open #code pre.open-untoggled {
+      display: block; }
+    .open.toggled #code pre.open-untoggled {
+      display: none; }
+    .open.toggled #code pre.open-toggled {
+      display: block; }
+  </style>
+  <div id="overhead">
+    <div id="owrapper">
+      <div id="frontflat">Front</div>
+      <div id="behindflat">Behind</div>
+    </div>
+    <div id="x">&larr; x &rarr;</div>
+    <div id="z">&uarr;<br>z<br>&darr;</div>
+  </div>
+  <div id="code">
+    <pre class="faded ready-untoggled ready-toggled open-untoggled open-toggled overlapped-untoggled offcenter zoomed"><code class="css">#container {
+  perspective: 1200px; }</code></pre>
+
+    <pre class="ready-untoggled"><code class="css">#behind {
+  transform: translateZ(-250px); }
+#front {
+  transform: translateX(0); }</code></pre>
+    <pre class="ready-toggled"><code class="css">#behind {
+  transform: translateZ(0); }
+#front {
+  transform: translateX(100%); }</code></pre>
+    <pre class="open-untoggled"><code class="css">#behind {
+  transform: translateX(100%); }
+#front {
+  transform: translateX(0); }</code></pre>
+    <pre class="open-toggled"><code class="css">#behind {
+  transform: translateX(100%)
+             translateZ(-250px); }
+#front {
+  transform: translateX(0); }</code></pre>
+  </div>
+<% end %>

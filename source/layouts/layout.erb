@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <title>Demo</title>
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
+    <style>
+      body {
+        padding: 77px 0 0 13px;
+        margin: 0;
+        font-family: sans-serif;
+        background: url('../images/chrome.png') no-repeat -20px -100px;
+      }
+
+      #container {
+        width: 320px;
+        height: 465px;
+        background: #1d1c1b;
+        overflow: hidden;
+        position: relative;
+
+        -webkit-perspective: 1200px;
+        -moz-perspective: 1200px;
+        perspective: 1200px;
+      }
+
+      #parent {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+      }
+    </style>
+  </head>
+  <body class="<%= yield_content :body_class %>">
+    <div id="container"><div id="parent">
+      <%= yield %>
+    </div></div>
+
+    <%= yield_content :outside %>
+    <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+    <script>
+      hljs.tabReplace = '      ';
+      hljs.initHighlightingOnLoad();
+    </script>
+  </body>
+</html>

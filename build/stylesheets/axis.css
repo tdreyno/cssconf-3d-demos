@@ -1,0 +1,1901 @@
+/* line 3, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+* {
+  box-sizing: border-box; }
+
+/* line 5, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+#container {
+  -webkit-perspective: 800px;
+  position: absolute;
+  top: 60%;
+  left: 50%; }
+
+/* line 19, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+#planes {
+  position: relative;
+  height: 300px;
+  -webkit-transform-style: preserve-3d; }
+  /* line 23, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+  #planes > div {
+    position: absolute;
+    height: 300px;
+    top: 0;
+    left: 0;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 300px;
+    font-size: 30px;
+    color: white;
+    opacity: 0;
+    -webkit-transition: all 400ms ease-in-out; }
+
+/* line 43, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides3 #container {
+  width: 333.33333px;
+  height: 300px;
+  margin: -166.66667px 0 -166.66667px; }
+/* line 49, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides3 #planes {
+  width: 333.33333px; }
+  /* line 52, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+  .sides3 #planes > div {
+    width: 333.33333px; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides3 #planes > div:nth-of-type(1) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(0deg) translateZ(96.22504px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides3 #planes > div:nth-of-type(1):after {
+        content: "Side 1"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides3 #planes > div:nth-of-type(2) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(120deg) translateZ(96.22504px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides3 #planes > div:nth-of-type(2):after {
+        content: "Side 2"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides3 #planes > div:nth-of-type(3) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(240deg) translateZ(96.22504px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides3 #planes > div:nth-of-type(3):after {
+        content: "Side 3"; }
+
+/* line 43, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides4 #container {
+  width: 250px;
+  height: 300px;
+  margin: -125px 0 -125px; }
+/* line 49, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides4 #planes {
+  width: 250px; }
+  /* line 52, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+  .sides4 #planes > div {
+    width: 250px; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides4 #planes > div:nth-of-type(1) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(0deg) translateZ(125.0px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides4 #planes > div:nth-of-type(1):after {
+        content: "Side 1"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides4 #planes > div:nth-of-type(2) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(90deg) translateZ(125.0px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides4 #planes > div:nth-of-type(2):after {
+        content: "Side 2"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides4 #planes > div:nth-of-type(3) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(180deg) translateZ(125.0px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides4 #planes > div:nth-of-type(3):after {
+        content: "Side 3"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides4 #planes > div:nth-of-type(4) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(270deg) translateZ(125.0px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides4 #planes > div:nth-of-type(4):after {
+        content: "Side 4"; }
+
+/* line 43, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides5 #container {
+  width: 200px;
+  height: 300px;
+  margin: -100px 0 -100px; }
+/* line 49, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides5 #planes {
+  width: 200px; }
+  /* line 52, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+  .sides5 #planes > div {
+    width: 200px; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides5 #planes > div:nth-of-type(1) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(0deg) translateZ(137.63819px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides5 #planes > div:nth-of-type(1):after {
+        content: "Side 1"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides5 #planes > div:nth-of-type(2) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(72deg) translateZ(137.63819px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides5 #planes > div:nth-of-type(2):after {
+        content: "Side 2"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides5 #planes > div:nth-of-type(3) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(144deg) translateZ(137.63819px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides5 #planes > div:nth-of-type(3):after {
+        content: "Side 3"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides5 #planes > div:nth-of-type(4) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(216deg) translateZ(137.63819px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides5 #planes > div:nth-of-type(4):after {
+        content: "Side 4"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides5 #planes > div:nth-of-type(5) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(288deg) translateZ(137.63819px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides5 #planes > div:nth-of-type(5):after {
+        content: "Side 5"; }
+
+/* line 43, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides6 #container {
+  width: 166.66667px;
+  height: 300px;
+  margin: -83.33333px 0 -83.33333px; }
+/* line 49, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides6 #planes {
+  width: 166.66667px; }
+  /* line 52, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+  .sides6 #planes > div {
+    width: 166.66667px; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides6 #planes > div:nth-of-type(1) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(0deg) translateZ(144.33757px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides6 #planes > div:nth-of-type(1):after {
+        content: "Side 1"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides6 #planes > div:nth-of-type(2) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(60deg) translateZ(144.33757px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides6 #planes > div:nth-of-type(2):after {
+        content: "Side 2"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides6 #planes > div:nth-of-type(3) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(120deg) translateZ(144.33757px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides6 #planes > div:nth-of-type(3):after {
+        content: "Side 3"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides6 #planes > div:nth-of-type(4) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(180deg) translateZ(144.33757px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides6 #planes > div:nth-of-type(4):after {
+        content: "Side 4"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides6 #planes > div:nth-of-type(5) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(240deg) translateZ(144.33757px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides6 #planes > div:nth-of-type(5):after {
+        content: "Side 5"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides6 #planes > div:nth-of-type(6) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(300deg) translateZ(144.33757px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides6 #planes > div:nth-of-type(6):after {
+        content: "Side 6"; }
+
+/* line 43, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides7 #container {
+  width: 142.85714px;
+  height: 300px;
+  margin: -71.42857px 0 -71.42857px; }
+/* line 49, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides7 #planes {
+  width: 142.85714px; }
+  /* line 52, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+  .sides7 #planes > div {
+    width: 142.85714px; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides7 #planes > div:nth-of-type(1) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(0deg) translateZ(148.32296px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides7 #planes > div:nth-of-type(1):after {
+        content: "Side 1"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides7 #planes > div:nth-of-type(2) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(51.42857deg) translateZ(148.32296px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides7 #planes > div:nth-of-type(2):after {
+        content: "Side 2"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides7 #planes > div:nth-of-type(3) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(102.85714deg) translateZ(148.32296px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides7 #planes > div:nth-of-type(3):after {
+        content: "Side 3"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides7 #planes > div:nth-of-type(4) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(154.28571deg) translateZ(148.32296px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides7 #planes > div:nth-of-type(4):after {
+        content: "Side 4"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides7 #planes > div:nth-of-type(5) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(205.71429deg) translateZ(148.32296px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides7 #planes > div:nth-of-type(5):after {
+        content: "Side 5"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides7 #planes > div:nth-of-type(6) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(257.14286deg) translateZ(148.32296px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides7 #planes > div:nth-of-type(6):after {
+        content: "Side 6"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides7 #planes > div:nth-of-type(7) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(308.57143deg) translateZ(148.32296px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides7 #planes > div:nth-of-type(7):after {
+        content: "Side 7"; }
+
+/* line 43, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides8 #container {
+  width: 125px;
+  height: 300px;
+  margin: -62.5px 0 -62.5px; }
+/* line 49, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides8 #planes {
+  width: 125px; }
+  /* line 52, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+  .sides8 #planes > div {
+    width: 125px; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides8 #planes > div:nth-of-type(1) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(0deg) translateZ(150.88835px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides8 #planes > div:nth-of-type(1):after {
+        content: "Side 1"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides8 #planes > div:nth-of-type(2) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(45deg) translateZ(150.88835px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides8 #planes > div:nth-of-type(2):after {
+        content: "Side 2"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides8 #planes > div:nth-of-type(3) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(90deg) translateZ(150.88835px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides8 #planes > div:nth-of-type(3):after {
+        content: "Side 3"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides8 #planes > div:nth-of-type(4) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(135deg) translateZ(150.88835px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides8 #planes > div:nth-of-type(4):after {
+        content: "Side 4"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides8 #planes > div:nth-of-type(5) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(180deg) translateZ(150.88835px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides8 #planes > div:nth-of-type(5):after {
+        content: "Side 5"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides8 #planes > div:nth-of-type(6) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(225deg) translateZ(150.88835px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides8 #planes > div:nth-of-type(6):after {
+        content: "Side 6"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides8 #planes > div:nth-of-type(7) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(270deg) translateZ(150.88835px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides8 #planes > div:nth-of-type(7):after {
+        content: "Side 7"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides8 #planes > div:nth-of-type(8) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(315deg) translateZ(150.88835px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides8 #planes > div:nth-of-type(8):after {
+        content: "Side 8"; }
+
+/* line 43, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides9 #container {
+  width: 111.11111px;
+  height: 300px;
+  margin: -55.55556px 0 -55.55556px; }
+/* line 49, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides9 #planes {
+  width: 111.11111px; }
+  /* line 52, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+  .sides9 #planes > div {
+    width: 111.11111px; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides9 #planes > div:nth-of-type(1) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(0deg) translateZ(152.63763px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides9 #planes > div:nth-of-type(1):after {
+        content: "Side 1"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides9 #planes > div:nth-of-type(2) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(40deg) translateZ(152.63763px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides9 #planes > div:nth-of-type(2):after {
+        content: "Side 2"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides9 #planes > div:nth-of-type(3) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(80deg) translateZ(152.63763px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides9 #planes > div:nth-of-type(3):after {
+        content: "Side 3"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides9 #planes > div:nth-of-type(4) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(120deg) translateZ(152.63763px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides9 #planes > div:nth-of-type(4):after {
+        content: "Side 4"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides9 #planes > div:nth-of-type(5) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(160deg) translateZ(152.63763px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides9 #planes > div:nth-of-type(5):after {
+        content: "Side 5"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides9 #planes > div:nth-of-type(6) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(200deg) translateZ(152.63763px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides9 #planes > div:nth-of-type(6):after {
+        content: "Side 6"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides9 #planes > div:nth-of-type(7) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(240deg) translateZ(152.63763px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides9 #planes > div:nth-of-type(7):after {
+        content: "Side 7"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides9 #planes > div:nth-of-type(8) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(280deg) translateZ(152.63763px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides9 #planes > div:nth-of-type(8):after {
+        content: "Side 8"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides9 #planes > div:nth-of-type(9) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(320deg) translateZ(152.63763px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides9 #planes > div:nth-of-type(9):after {
+        content: "Side 9"; }
+
+/* line 43, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides10 #container {
+  width: 100px;
+  height: 300px;
+  margin: -50px 0 -50px; }
+/* line 49, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides10 #planes {
+  width: 100px; }
+  /* line 52, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+  .sides10 #planes > div {
+    width: 100px; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides10 #planes > div:nth-of-type(1) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(0deg) translateZ(153.88418px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides10 #planes > div:nth-of-type(1):after {
+        content: "Side 1"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides10 #planes > div:nth-of-type(2) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(36deg) translateZ(153.88418px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides10 #planes > div:nth-of-type(2):after {
+        content: "Side 2"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides10 #planes > div:nth-of-type(3) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(72deg) translateZ(153.88418px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides10 #planes > div:nth-of-type(3):after {
+        content: "Side 3"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides10 #planes > div:nth-of-type(4) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(108deg) translateZ(153.88418px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides10 #planes > div:nth-of-type(4):after {
+        content: "Side 4"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides10 #planes > div:nth-of-type(5) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(144deg) translateZ(153.88418px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides10 #planes > div:nth-of-type(5):after {
+        content: "Side 5"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides10 #planes > div:nth-of-type(6) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(180deg) translateZ(153.88418px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides10 #planes > div:nth-of-type(6):after {
+        content: "Side 6"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides10 #planes > div:nth-of-type(7) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(216deg) translateZ(153.88418px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides10 #planes > div:nth-of-type(7):after {
+        content: "Side 7"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides10 #planes > div:nth-of-type(8) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(252deg) translateZ(153.88418px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides10 #planes > div:nth-of-type(8):after {
+        content: "Side 8"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides10 #planes > div:nth-of-type(9) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(288deg) translateZ(153.88418px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides10 #planes > div:nth-of-type(9):after {
+        content: "Side 9"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides10 #planes > div:nth-of-type(10) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(324deg) translateZ(153.88418px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides10 #planes > div:nth-of-type(10):after {
+        content: "Side 10"; }
+
+/* line 43, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides11 #container {
+  width: 90.90909px;
+  height: 300px;
+  margin: -45.45455px 0 -45.45455px; }
+/* line 49, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides11 #planes {
+  width: 90.90909px; }
+  /* line 52, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+  .sides11 #planes > div {
+    width: 90.90909px; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides11 #planes > div:nth-of-type(1) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(0deg) translateZ(154.80397px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides11 #planes > div:nth-of-type(1):after {
+        content: "Side 1"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides11 #planes > div:nth-of-type(2) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(32.72727deg) translateZ(154.80397px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides11 #planes > div:nth-of-type(2):after {
+        content: "Side 2"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides11 #planes > div:nth-of-type(3) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(65.45455deg) translateZ(154.80397px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides11 #planes > div:nth-of-type(3):after {
+        content: "Side 3"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides11 #planes > div:nth-of-type(4) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(98.18182deg) translateZ(154.80397px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides11 #planes > div:nth-of-type(4):after {
+        content: "Side 4"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides11 #planes > div:nth-of-type(5) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(130.90909deg) translateZ(154.80397px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides11 #planes > div:nth-of-type(5):after {
+        content: "Side 5"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides11 #planes > div:nth-of-type(6) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(163.63636deg) translateZ(154.80397px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides11 #planes > div:nth-of-type(6):after {
+        content: "Side 6"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides11 #planes > div:nth-of-type(7) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(196.36364deg) translateZ(154.80397px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides11 #planes > div:nth-of-type(7):after {
+        content: "Side 7"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides11 #planes > div:nth-of-type(8) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(229.09091deg) translateZ(154.80397px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides11 #planes > div:nth-of-type(8):after {
+        content: "Side 8"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides11 #planes > div:nth-of-type(9) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(261.81818deg) translateZ(154.80397px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides11 #planes > div:nth-of-type(9):after {
+        content: "Side 9"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides11 #planes > div:nth-of-type(10) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(294.54545deg) translateZ(154.80397px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides11 #planes > div:nth-of-type(10):after {
+        content: "Side 10"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides11 #planes > div:nth-of-type(11) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(327.27273deg) translateZ(154.80397px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides11 #planes > div:nth-of-type(11):after {
+        content: "Side 11"; }
+
+/* line 43, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides12 #container {
+  width: 83.33333px;
+  height: 300px;
+  margin: -41.66667px 0 -41.66667px; }
+/* line 49, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides12 #planes {
+  width: 83.33333px; }
+  /* line 52, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+  .sides12 #planes > div {
+    width: 83.33333px; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides12 #planes > div:nth-of-type(1) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(0deg) translateZ(155.50212px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides12 #planes > div:nth-of-type(1):after {
+        content: "Side 1"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides12 #planes > div:nth-of-type(2) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(30deg) translateZ(155.50212px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides12 #planes > div:nth-of-type(2):after {
+        content: "Side 2"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides12 #planes > div:nth-of-type(3) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(60deg) translateZ(155.50212px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides12 #planes > div:nth-of-type(3):after {
+        content: "Side 3"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides12 #planes > div:nth-of-type(4) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(90deg) translateZ(155.50212px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides12 #planes > div:nth-of-type(4):after {
+        content: "Side 4"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides12 #planes > div:nth-of-type(5) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(120deg) translateZ(155.50212px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides12 #planes > div:nth-of-type(5):after {
+        content: "Side 5"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides12 #planes > div:nth-of-type(6) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(150deg) translateZ(155.50212px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides12 #planes > div:nth-of-type(6):after {
+        content: "Side 6"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides12 #planes > div:nth-of-type(7) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(180deg) translateZ(155.50212px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides12 #planes > div:nth-of-type(7):after {
+        content: "Side 7"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides12 #planes > div:nth-of-type(8) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(210deg) translateZ(155.50212px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides12 #planes > div:nth-of-type(8):after {
+        content: "Side 8"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides12 #planes > div:nth-of-type(9) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(240deg) translateZ(155.50212px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides12 #planes > div:nth-of-type(9):after {
+        content: "Side 9"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides12 #planes > div:nth-of-type(10) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(270deg) translateZ(155.50212px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides12 #planes > div:nth-of-type(10):after {
+        content: "Side 10"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides12 #planes > div:nth-of-type(11) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(300deg) translateZ(155.50212px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides12 #planes > div:nth-of-type(11):after {
+        content: "Side 11"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides12 #planes > div:nth-of-type(12) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(330deg) translateZ(155.50212px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides12 #planes > div:nth-of-type(12):after {
+        content: "Side 12"; }
+
+/* line 43, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides13 #container {
+  width: 76.92308px;
+  height: 300px;
+  margin: -38.46154px 0 -38.46154px; }
+/* line 49, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides13 #planes {
+  width: 76.92308px; }
+  /* line 52, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+  .sides13 #planes > div {
+    width: 76.92308px; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides13 #planes > div:nth-of-type(1) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(0deg) translateZ(156.0446px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides13 #planes > div:nth-of-type(1):after {
+        content: "Side 1"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides13 #planes > div:nth-of-type(2) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(27.69231deg) translateZ(156.0446px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides13 #planes > div:nth-of-type(2):after {
+        content: "Side 2"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides13 #planes > div:nth-of-type(3) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(55.38462deg) translateZ(156.0446px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides13 #planes > div:nth-of-type(3):after {
+        content: "Side 3"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides13 #planes > div:nth-of-type(4) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(83.07692deg) translateZ(156.0446px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides13 #planes > div:nth-of-type(4):after {
+        content: "Side 4"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides13 #planes > div:nth-of-type(5) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(110.76923deg) translateZ(156.0446px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides13 #planes > div:nth-of-type(5):after {
+        content: "Side 5"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides13 #planes > div:nth-of-type(6) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(138.46154deg) translateZ(156.0446px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides13 #planes > div:nth-of-type(6):after {
+        content: "Side 6"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides13 #planes > div:nth-of-type(7) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(166.15385deg) translateZ(156.0446px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides13 #planes > div:nth-of-type(7):after {
+        content: "Side 7"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides13 #planes > div:nth-of-type(8) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(193.84615deg) translateZ(156.0446px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides13 #planes > div:nth-of-type(8):after {
+        content: "Side 8"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides13 #planes > div:nth-of-type(9) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(221.53846deg) translateZ(156.0446px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides13 #planes > div:nth-of-type(9):after {
+        content: "Side 9"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides13 #planes > div:nth-of-type(10) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(249.23077deg) translateZ(156.0446px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides13 #planes > div:nth-of-type(10):after {
+        content: "Side 10"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides13 #planes > div:nth-of-type(11) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(276.92308deg) translateZ(156.0446px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides13 #planes > div:nth-of-type(11):after {
+        content: "Side 11"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides13 #planes > div:nth-of-type(12) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(304.61538deg) translateZ(156.0446px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides13 #planes > div:nth-of-type(12):after {
+        content: "Side 12"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides13 #planes > div:nth-of-type(13) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(332.30769deg) translateZ(156.0446px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides13 #planes > div:nth-of-type(13):after {
+        content: "Side 13"; }
+
+/* line 43, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides14 #container {
+  width: 71.42857px;
+  height: 300px;
+  margin: -35.71429px 0 -35.71429px; }
+/* line 49, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides14 #planes {
+  width: 71.42857px; }
+  /* line 52, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+  .sides14 #planes > div {
+    width: 71.42857px; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides14 #planes > div:nth-of-type(1) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(0deg) translateZ(156.47451px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides14 #planes > div:nth-of-type(1):after {
+        content: "Side 1"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides14 #planes > div:nth-of-type(2) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(25.71429deg) translateZ(156.47451px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides14 #planes > div:nth-of-type(2):after {
+        content: "Side 2"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides14 #planes > div:nth-of-type(3) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(51.42857deg) translateZ(156.47451px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides14 #planes > div:nth-of-type(3):after {
+        content: "Side 3"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides14 #planes > div:nth-of-type(4) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(77.14286deg) translateZ(156.47451px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides14 #planes > div:nth-of-type(4):after {
+        content: "Side 4"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides14 #planes > div:nth-of-type(5) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(102.85714deg) translateZ(156.47451px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides14 #planes > div:nth-of-type(5):after {
+        content: "Side 5"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides14 #planes > div:nth-of-type(6) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(128.57143deg) translateZ(156.47451px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides14 #planes > div:nth-of-type(6):after {
+        content: "Side 6"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides14 #planes > div:nth-of-type(7) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(154.28571deg) translateZ(156.47451px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides14 #planes > div:nth-of-type(7):after {
+        content: "Side 7"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides14 #planes > div:nth-of-type(8) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(180deg) translateZ(156.47451px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides14 #planes > div:nth-of-type(8):after {
+        content: "Side 8"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides14 #planes > div:nth-of-type(9) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(205.71429deg) translateZ(156.47451px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides14 #planes > div:nth-of-type(9):after {
+        content: "Side 9"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides14 #planes > div:nth-of-type(10) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(231.42857deg) translateZ(156.47451px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides14 #planes > div:nth-of-type(10):after {
+        content: "Side 10"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides14 #planes > div:nth-of-type(11) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(257.14286deg) translateZ(156.47451px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides14 #planes > div:nth-of-type(11):after {
+        content: "Side 11"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides14 #planes > div:nth-of-type(12) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(282.85714deg) translateZ(156.47451px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides14 #planes > div:nth-of-type(12):after {
+        content: "Side 12"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides14 #planes > div:nth-of-type(13) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(308.57143deg) translateZ(156.47451px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides14 #planes > div:nth-of-type(13):after {
+        content: "Side 13"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides14 #planes > div:nth-of-type(14) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(334.28571deg) translateZ(156.47451px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides14 #planes > div:nth-of-type(14):after {
+        content: "Side 14"; }
+
+/* line 43, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides15 #container {
+  width: 66.66667px;
+  height: 300px;
+  margin: -33.33333px 0 -33.33333px; }
+/* line 49, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides15 #planes {
+  width: 66.66667px; }
+  /* line 52, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+  .sides15 #planes > div {
+    width: 66.66667px; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides15 #planes > div:nth-of-type(1) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(0deg) translateZ(156.821px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides15 #planes > div:nth-of-type(1):after {
+        content: "Side 1"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides15 #planes > div:nth-of-type(2) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(24deg) translateZ(156.821px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides15 #planes > div:nth-of-type(2):after {
+        content: "Side 2"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides15 #planes > div:nth-of-type(3) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(48deg) translateZ(156.821px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides15 #planes > div:nth-of-type(3):after {
+        content: "Side 3"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides15 #planes > div:nth-of-type(4) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(72deg) translateZ(156.821px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides15 #planes > div:nth-of-type(4):after {
+        content: "Side 4"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides15 #planes > div:nth-of-type(5) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(96deg) translateZ(156.821px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides15 #planes > div:nth-of-type(5):after {
+        content: "Side 5"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides15 #planes > div:nth-of-type(6) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(120deg) translateZ(156.821px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides15 #planes > div:nth-of-type(6):after {
+        content: "Side 6"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides15 #planes > div:nth-of-type(7) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(144deg) translateZ(156.821px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides15 #planes > div:nth-of-type(7):after {
+        content: "Side 7"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides15 #planes > div:nth-of-type(8) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(168deg) translateZ(156.821px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides15 #planes > div:nth-of-type(8):after {
+        content: "Side 8"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides15 #planes > div:nth-of-type(9) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(192deg) translateZ(156.821px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides15 #planes > div:nth-of-type(9):after {
+        content: "Side 9"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides15 #planes > div:nth-of-type(10) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(216deg) translateZ(156.821px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides15 #planes > div:nth-of-type(10):after {
+        content: "Side 10"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides15 #planes > div:nth-of-type(11) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(240deg) translateZ(156.821px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides15 #planes > div:nth-of-type(11):after {
+        content: "Side 11"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides15 #planes > div:nth-of-type(12) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(264deg) translateZ(156.821px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides15 #planes > div:nth-of-type(12):after {
+        content: "Side 12"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides15 #planes > div:nth-of-type(13) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(288deg) translateZ(156.821px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides15 #planes > div:nth-of-type(13):after {
+        content: "Side 13"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides15 #planes > div:nth-of-type(14) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(312deg) translateZ(156.821px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides15 #planes > div:nth-of-type(14):after {
+        content: "Side 14"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides15 #planes > div:nth-of-type(15) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(336deg) translateZ(156.821px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides15 #planes > div:nth-of-type(15):after {
+        content: "Side 15"; }
+
+/* line 43, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides16 #container {
+  width: 62.5px;
+  height: 300px;
+  margin: -31.25px 0 -31.25px; }
+/* line 49, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides16 #planes {
+  width: 62.5px; }
+  /* line 52, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+  .sides16 #planes > div {
+    width: 62.5px; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides16 #planes > div:nth-of-type(1) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(0deg) translateZ(157.10436px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides16 #planes > div:nth-of-type(1):after {
+        content: "Side 1"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides16 #planes > div:nth-of-type(2) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(22.5deg) translateZ(157.10436px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides16 #planes > div:nth-of-type(2):after {
+        content: "Side 2"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides16 #planes > div:nth-of-type(3) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(45deg) translateZ(157.10436px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides16 #planes > div:nth-of-type(3):after {
+        content: "Side 3"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides16 #planes > div:nth-of-type(4) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(67.5deg) translateZ(157.10436px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides16 #planes > div:nth-of-type(4):after {
+        content: "Side 4"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides16 #planes > div:nth-of-type(5) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(90deg) translateZ(157.10436px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides16 #planes > div:nth-of-type(5):after {
+        content: "Side 5"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides16 #planes > div:nth-of-type(6) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(112.5deg) translateZ(157.10436px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides16 #planes > div:nth-of-type(6):after {
+        content: "Side 6"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides16 #planes > div:nth-of-type(7) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(135deg) translateZ(157.10436px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides16 #planes > div:nth-of-type(7):after {
+        content: "Side 7"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides16 #planes > div:nth-of-type(8) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(157.5deg) translateZ(157.10436px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides16 #planes > div:nth-of-type(8):after {
+        content: "Side 8"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides16 #planes > div:nth-of-type(9) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(180deg) translateZ(157.10436px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides16 #planes > div:nth-of-type(9):after {
+        content: "Side 9"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides16 #planes > div:nth-of-type(10) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(202.5deg) translateZ(157.10436px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides16 #planes > div:nth-of-type(10):after {
+        content: "Side 10"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides16 #planes > div:nth-of-type(11) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(225deg) translateZ(157.10436px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides16 #planes > div:nth-of-type(11):after {
+        content: "Side 11"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides16 #planes > div:nth-of-type(12) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(247.5deg) translateZ(157.10436px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides16 #planes > div:nth-of-type(12):after {
+        content: "Side 12"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides16 #planes > div:nth-of-type(13) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(270deg) translateZ(157.10436px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides16 #planes > div:nth-of-type(13):after {
+        content: "Side 13"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides16 #planes > div:nth-of-type(14) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(292.5deg) translateZ(157.10436px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides16 #planes > div:nth-of-type(14):after {
+        content: "Side 14"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides16 #planes > div:nth-of-type(15) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(315deg) translateZ(157.10436px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides16 #planes > div:nth-of-type(15):after {
+        content: "Side 15"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides16 #planes > div:nth-of-type(16) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(337.5deg) translateZ(157.10436px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides16 #planes > div:nth-of-type(16):after {
+        content: "Side 16"; }
+
+/* line 43, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides17 #container {
+  width: 58.82353px;
+  height: 300px;
+  margin: -29.41176px 0 -29.41176px; }
+/* line 49, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides17 #planes {
+  width: 58.82353px; }
+  /* line 52, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+  .sides17 #planes > div {
+    width: 58.82353px; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides17 #planes > div:nth-of-type(1) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(0deg) translateZ(157.33904px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides17 #planes > div:nth-of-type(1):after {
+        content: "Side 1"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides17 #planes > div:nth-of-type(2) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(21.17647deg) translateZ(157.33904px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides17 #planes > div:nth-of-type(2):after {
+        content: "Side 2"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides17 #planes > div:nth-of-type(3) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(42.35294deg) translateZ(157.33904px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides17 #planes > div:nth-of-type(3):after {
+        content: "Side 3"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides17 #planes > div:nth-of-type(4) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(63.52941deg) translateZ(157.33904px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides17 #planes > div:nth-of-type(4):after {
+        content: "Side 4"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides17 #planes > div:nth-of-type(5) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(84.70588deg) translateZ(157.33904px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides17 #planes > div:nth-of-type(5):after {
+        content: "Side 5"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides17 #planes > div:nth-of-type(6) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(105.88235deg) translateZ(157.33904px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides17 #planes > div:nth-of-type(6):after {
+        content: "Side 6"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides17 #planes > div:nth-of-type(7) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(127.05882deg) translateZ(157.33904px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides17 #planes > div:nth-of-type(7):after {
+        content: "Side 7"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides17 #planes > div:nth-of-type(8) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(148.23529deg) translateZ(157.33904px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides17 #planes > div:nth-of-type(8):after {
+        content: "Side 8"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides17 #planes > div:nth-of-type(9) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(169.41176deg) translateZ(157.33904px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides17 #planes > div:nth-of-type(9):after {
+        content: "Side 9"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides17 #planes > div:nth-of-type(10) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(190.58824deg) translateZ(157.33904px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides17 #planes > div:nth-of-type(10):after {
+        content: "Side 10"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides17 #planes > div:nth-of-type(11) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(211.76471deg) translateZ(157.33904px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides17 #planes > div:nth-of-type(11):after {
+        content: "Side 11"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides17 #planes > div:nth-of-type(12) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(232.94118deg) translateZ(157.33904px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides17 #planes > div:nth-of-type(12):after {
+        content: "Side 12"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides17 #planes > div:nth-of-type(13) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(254.11765deg) translateZ(157.33904px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides17 #planes > div:nth-of-type(13):after {
+        content: "Side 13"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides17 #planes > div:nth-of-type(14) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(275.29412deg) translateZ(157.33904px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides17 #planes > div:nth-of-type(14):after {
+        content: "Side 14"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides17 #planes > div:nth-of-type(15) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(296.47059deg) translateZ(157.33904px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides17 #planes > div:nth-of-type(15):after {
+        content: "Side 15"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides17 #planes > div:nth-of-type(16) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(317.64706deg) translateZ(157.33904px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides17 #planes > div:nth-of-type(16):after {
+        content: "Side 16"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides17 #planes > div:nth-of-type(17) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(338.82353deg) translateZ(157.33904px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides17 #planes > div:nth-of-type(17):after {
+        content: "Side 17"; }
+
+/* line 43, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides18 #container {
+  width: 55.55556px;
+  height: 300px;
+  margin: -27.77778px 0 -27.77778px; }
+/* line 49, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides18 #planes {
+  width: 55.55556px; }
+  /* line 52, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+  .sides18 #planes > div {
+    width: 55.55556px; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides18 #planes > div:nth-of-type(1) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(0deg) translateZ(157.53561px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides18 #planes > div:nth-of-type(1):after {
+        content: "Side 1"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides18 #planes > div:nth-of-type(2) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(20deg) translateZ(157.53561px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides18 #planes > div:nth-of-type(2):after {
+        content: "Side 2"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides18 #planes > div:nth-of-type(3) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(40deg) translateZ(157.53561px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides18 #planes > div:nth-of-type(3):after {
+        content: "Side 3"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides18 #planes > div:nth-of-type(4) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(60deg) translateZ(157.53561px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides18 #planes > div:nth-of-type(4):after {
+        content: "Side 4"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides18 #planes > div:nth-of-type(5) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(80deg) translateZ(157.53561px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides18 #planes > div:nth-of-type(5):after {
+        content: "Side 5"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides18 #planes > div:nth-of-type(6) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(100deg) translateZ(157.53561px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides18 #planes > div:nth-of-type(6):after {
+        content: "Side 6"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides18 #planes > div:nth-of-type(7) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(120deg) translateZ(157.53561px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides18 #planes > div:nth-of-type(7):after {
+        content: "Side 7"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides18 #planes > div:nth-of-type(8) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(140deg) translateZ(157.53561px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides18 #planes > div:nth-of-type(8):after {
+        content: "Side 8"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides18 #planes > div:nth-of-type(9) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(160deg) translateZ(157.53561px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides18 #planes > div:nth-of-type(9):after {
+        content: "Side 9"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides18 #planes > div:nth-of-type(10) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(180deg) translateZ(157.53561px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides18 #planes > div:nth-of-type(10):after {
+        content: "Side 10"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides18 #planes > div:nth-of-type(11) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(200deg) translateZ(157.53561px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides18 #planes > div:nth-of-type(11):after {
+        content: "Side 11"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides18 #planes > div:nth-of-type(12) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(220deg) translateZ(157.53561px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides18 #planes > div:nth-of-type(12):after {
+        content: "Side 12"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides18 #planes > div:nth-of-type(13) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(240deg) translateZ(157.53561px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides18 #planes > div:nth-of-type(13):after {
+        content: "Side 13"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides18 #planes > div:nth-of-type(14) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(260deg) translateZ(157.53561px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides18 #planes > div:nth-of-type(14):after {
+        content: "Side 14"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides18 #planes > div:nth-of-type(15) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(280deg) translateZ(157.53561px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides18 #planes > div:nth-of-type(15):after {
+        content: "Side 15"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides18 #planes > div:nth-of-type(16) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(300deg) translateZ(157.53561px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides18 #planes > div:nth-of-type(16):after {
+        content: "Side 16"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides18 #planes > div:nth-of-type(17) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(320deg) translateZ(157.53561px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides18 #planes > div:nth-of-type(17):after {
+        content: "Side 17"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides18 #planes > div:nth-of-type(18) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(340deg) translateZ(157.53561px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides18 #planes > div:nth-of-type(18):after {
+        content: "Side 18"; }
+
+/* line 43, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides19 #container {
+  width: 52.63158px;
+  height: 300px;
+  margin: -26.31579px 0 -26.31579px; }
+/* line 49, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides19 #planes {
+  width: 52.63158px; }
+  /* line 52, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+  .sides19 #planes > div {
+    width: 52.63158px; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides19 #planes > div:nth-of-type(1) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(0deg) translateZ(157.70188px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides19 #planes > div:nth-of-type(1):after {
+        content: "Side 1"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides19 #planes > div:nth-of-type(2) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(18.94737deg) translateZ(157.70188px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides19 #planes > div:nth-of-type(2):after {
+        content: "Side 2"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides19 #planes > div:nth-of-type(3) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(37.89474deg) translateZ(157.70188px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides19 #planes > div:nth-of-type(3):after {
+        content: "Side 3"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides19 #planes > div:nth-of-type(4) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(56.84211deg) translateZ(157.70188px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides19 #planes > div:nth-of-type(4):after {
+        content: "Side 4"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides19 #planes > div:nth-of-type(5) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(75.78947deg) translateZ(157.70188px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides19 #planes > div:nth-of-type(5):after {
+        content: "Side 5"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides19 #planes > div:nth-of-type(6) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(94.73684deg) translateZ(157.70188px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides19 #planes > div:nth-of-type(6):after {
+        content: "Side 6"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides19 #planes > div:nth-of-type(7) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(113.68421deg) translateZ(157.70188px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides19 #planes > div:nth-of-type(7):after {
+        content: "Side 7"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides19 #planes > div:nth-of-type(8) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(132.63158deg) translateZ(157.70188px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides19 #planes > div:nth-of-type(8):after {
+        content: "Side 8"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides19 #planes > div:nth-of-type(9) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(151.57895deg) translateZ(157.70188px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides19 #planes > div:nth-of-type(9):after {
+        content: "Side 9"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides19 #planes > div:nth-of-type(10) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(170.52632deg) translateZ(157.70188px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides19 #planes > div:nth-of-type(10):after {
+        content: "Side 10"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides19 #planes > div:nth-of-type(11) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(189.47368deg) translateZ(157.70188px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides19 #planes > div:nth-of-type(11):after {
+        content: "Side 11"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides19 #planes > div:nth-of-type(12) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(208.42105deg) translateZ(157.70188px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides19 #planes > div:nth-of-type(12):after {
+        content: "Side 12"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides19 #planes > div:nth-of-type(13) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(227.36842deg) translateZ(157.70188px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides19 #planes > div:nth-of-type(13):after {
+        content: "Side 13"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides19 #planes > div:nth-of-type(14) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(246.31579deg) translateZ(157.70188px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides19 #planes > div:nth-of-type(14):after {
+        content: "Side 14"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides19 #planes > div:nth-of-type(15) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(265.26316deg) translateZ(157.70188px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides19 #planes > div:nth-of-type(15):after {
+        content: "Side 15"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides19 #planes > div:nth-of-type(16) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(284.21053deg) translateZ(157.70188px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides19 #planes > div:nth-of-type(16):after {
+        content: "Side 16"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides19 #planes > div:nth-of-type(17) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(303.15789deg) translateZ(157.70188px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides19 #planes > div:nth-of-type(17):after {
+        content: "Side 17"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides19 #planes > div:nth-of-type(18) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(322.10526deg) translateZ(157.70188px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides19 #planes > div:nth-of-type(18):after {
+        content: "Side 18"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides19 #planes > div:nth-of-type(19) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(341.05263deg) translateZ(157.70188px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides19 #planes > div:nth-of-type(19):after {
+        content: "Side 19"; }
+
+/* line 43, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides20 #container {
+  width: 50px;
+  height: 300px;
+  margin: -25px 0 -25px; }
+/* line 49, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+.sides20 #planes {
+  width: 50px; }
+  /* line 52, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+  .sides20 #planes > div {
+    width: 50px; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides20 #planes > div:nth-of-type(1) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(0deg) translateZ(157.84379px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides20 #planes > div:nth-of-type(1):after {
+        content: "Side 1"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides20 #planes > div:nth-of-type(2) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(18deg) translateZ(157.84379px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides20 #planes > div:nth-of-type(2):after {
+        content: "Side 2"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides20 #planes > div:nth-of-type(3) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(36deg) translateZ(157.84379px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides20 #planes > div:nth-of-type(3):after {
+        content: "Side 3"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides20 #planes > div:nth-of-type(4) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(54deg) translateZ(157.84379px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides20 #planes > div:nth-of-type(4):after {
+        content: "Side 4"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides20 #planes > div:nth-of-type(5) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(72deg) translateZ(157.84379px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides20 #planes > div:nth-of-type(5):after {
+        content: "Side 5"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides20 #planes > div:nth-of-type(6) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(90deg) translateZ(157.84379px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides20 #planes > div:nth-of-type(6):after {
+        content: "Side 6"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides20 #planes > div:nth-of-type(7) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(108deg) translateZ(157.84379px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides20 #planes > div:nth-of-type(7):after {
+        content: "Side 7"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides20 #planes > div:nth-of-type(8) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(126deg) translateZ(157.84379px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides20 #planes > div:nth-of-type(8):after {
+        content: "Side 8"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides20 #planes > div:nth-of-type(9) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(144deg) translateZ(157.84379px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides20 #planes > div:nth-of-type(9):after {
+        content: "Side 9"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides20 #planes > div:nth-of-type(10) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(162deg) translateZ(157.84379px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides20 #planes > div:nth-of-type(10):after {
+        content: "Side 10"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides20 #planes > div:nth-of-type(11) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(180deg) translateZ(157.84379px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides20 #planes > div:nth-of-type(11):after {
+        content: "Side 11"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides20 #planes > div:nth-of-type(12) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(198deg) translateZ(157.84379px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides20 #planes > div:nth-of-type(12):after {
+        content: "Side 12"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides20 #planes > div:nth-of-type(13) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(216deg) translateZ(157.84379px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides20 #planes > div:nth-of-type(13):after {
+        content: "Side 13"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides20 #planes > div:nth-of-type(14) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(234deg) translateZ(157.84379px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides20 #planes > div:nth-of-type(14):after {
+        content: "Side 14"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides20 #planes > div:nth-of-type(15) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(252deg) translateZ(157.84379px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides20 #planes > div:nth-of-type(15):after {
+        content: "Side 15"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides20 #planes > div:nth-of-type(16) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(270deg) translateZ(157.84379px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides20 #planes > div:nth-of-type(16):after {
+        content: "Side 16"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides20 #planes > div:nth-of-type(17) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(288deg) translateZ(157.84379px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides20 #planes > div:nth-of-type(17):after {
+        content: "Side 17"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides20 #planes > div:nth-of-type(18) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(306deg) translateZ(157.84379px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides20 #planes > div:nth-of-type(18):after {
+        content: "Side 18"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides20 #planes > div:nth-of-type(19) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(324deg) translateZ(157.84379px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides20 #planes > div:nth-of-type(19):after {
+        content: "Side 19"; }
+    /* line 60, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+    .sides20 #planes > div:nth-of-type(20) {
+      background: green;
+      opacity: 0.9;
+      -webkit-transform: rotateY(342deg) translateZ(157.84379px); }
+      /* line 64, /Users/thomasreynolds/Dropbox/Public/demos/source/stylesheets/axis.css.scss */
+      .sides20 #planes > div:nth-of-type(20):after {
+        content: "Side 20"; }

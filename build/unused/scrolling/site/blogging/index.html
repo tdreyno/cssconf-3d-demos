@@ -1,0 +1,403 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <link href="../stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Questrial|Arvo" media="screen" rel="stylesheet" type="text/css" />
+    <title>Middleman: Blogging</title>
+  </head>
+  <body>
+
+      <header id="header">
+    <div class="container">
+      <h1><a class="logo" href="/"><img width="225" height="225" alt="Middleman" src="../images/mm-blue-w-text.svg" /></a></h1>
+      <p class="console">$ gem install middleman</p>
+      <a class="toc-nav-link icon-arrow-down" href="#toc">Menu</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav id="toc">
+      <div class="toc-block">
+  <h3>Middleman Basics</h3>
+  <ul>
+      <li><a href="/getting-started/">Getting Started</a></li>
+      <li><a href="/templates/">Templates</a></li>
+      <li><a href="/helpers/">Template Helpers</a></li>
+      <li><a href="/frontmatter/">Frontmatter</a></li>
+      <li><a href="/dynamic-pages/">Dynamic Pages</a></li>
+      <li><a href="/asset-pipeline/">Asset Pipeline</a></li>
+      <li><a href="/pretty-urls/">Pretty URLs (Directory Indexes)</a></li>
+      <li><a href="/livereload/">LiveReload</a></li>
+      <li><a href="/blogging/">Blogging</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>Advanced Features</h3>
+  <ul>
+      <li><a href="/advanced/configuration/">Configuring Your Site</a></li>
+      <li><a href="/advanced/local-data/">Local Data</a></li>
+      <li><a href="/advanced/localization/">Localization (i18n)</a></li>
+      <li><a href="/advanced/sitemap/">The Sitemap</a></li>
+      <li><a href="/advanced/rack-middleware/">Rack Middleware</a></li>
+      <li><a href="/advanced/custom/">Custom Extensions</a></li>
+      <li><a href="/advanced/file-size-optimization/">File Size Optimization</a></li>
+      <li><a href="/advanced/improving-cacheability/">Improving Cacheability</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>Community</h3>
+  <ul>
+      <li><a href="http://directory.middlemanapp.com/">Extensions</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/templates/all">Project Templates</a></li>
+      <li><a href="/community/deployment-solutions/">Deployment Solutions</a></li>
+      <li><a href="/community/built-using-middleman/">Sites Built Using Middleman</a></li>
+      <li><a href="http://forum.middlemanapp.com/" target="_blank">Community Forum</a></li>
+      <li><a href="https://github.com/middleman/middleman" target="_blank">GitHub Repository</a></li>
+  </ul>
+</div>
+    </nav>
+
+    <article id="main" role="main">
+      <h1 id="toc_0">Blogging</h1>
+
+<p>Middleman has an official extension to support blogging, articles and tagging. <code>middleman-blog</code> ships as an extension and must be installed to use. Simply specify the gem in your <code>Gemfile</code>:</p>
+
+<pre><code class="ruby">gem &quot;middleman-blog&quot;
+</code></pre>
+
+<p>Or install it by hand if you&#39;re not using Bundler:</p>
+
+<pre><code class="bash">gem install middleman-blog
+</code></pre>
+
+<p>Then activate the extension in your <code>config.rb</code>:</p>
+
+<pre><code class="ruby">activate :blog do |blog|
+  # set options on blog
+end
+</code></pre>
+
+<p>Alternatively, you can generate a fresh project already setup for blogging:</p>
+
+<pre><code class="bash">middleman init MY_BLOG_PROJECT --template=blog
+</code></pre>
+
+<p>If you already have a Middleman project, you can re-run <code>middleman init</code> with the blog template option to generate the sample <a href="https://github.com/middleman/middleman-blog/blob/master/lib/middleman-blog/template/source/index.html.erb"><code>index.html</code></a>, <a href="https://github.com/middleman/middleman-blog/blob/master/lib/middleman-blog/template/source/tag.html.erb"><code>tag.html</code></a>, <a href="https://github.com/middleman/middleman-blog/blob/master/lib/middleman-blog/template/source/calendar.html.erb"><code>calendar.html</code></a>, and <a href="https://github.com/middleman/middleman-blog/blob/master/lib/middleman-blog/template/source/feed.xml.builder"><code>feed.xml</code></a>, or you can write those yourself. You can see <a href="https://github.com/middleman/middleman-blog/tree/master/lib/middleman-blog/template/source">what gets generated</a> on GitHub.</p>
+
+<p>Because sitemap manipulators tend to be order-dependent, if you are using <a href="/pretty-urls/"><code>directory_indexes</code></a>, you&#39;ll want to make sure that you activate it <em>after</em> you activate the blog extension. For example:</p>
+
+<pre><code class="ruby">activate :blog do |blog|
+  # set options on blog
+end
+
+activate :directory_indexes
+</code></pre>
+
+<h2 id="toc_1">Articles</h2>
+
+<p>Like Middleman itself, the blog extension is focused on individual files. Each article is its own file, using any template language you like. The default filename structure for articles is  <code>:year-:month-:day-:title.html</code>. When you want to create a new article, place it in the correct path and include the basic <a href="/frontmatter/">frontmatter</a> to get going. You can set the <code>blog.sources</code> option while activating <code>:blog</code> in your <code>config.rb</code> to change where and in what format Middleman should look for articles.</p>
+
+<p>Let&#39;s say I want to create a new post about Middleman. I would create a file at <code>source/2011-10-18-middleman.html.markdown</code>. The minimum contents of this file are a <code>title</code> entry in the frontmatter:</p>
+
+<pre><code class="html">---
+title: My Middleman Blog Post
+---
+
+Hello World
+</code></pre>
+
+<p>If you want, you can specify a full date and time as a <code>date</code> entry in the front matter, to help with ordering multiple posts from the same day. You can also include a list of <code>tags</code> in the front matter to generate tag pages.</p>
+
+<p>As a shortcut, you can run <code>middleman article TITLE</code> and Middleman will create a new article for you in the right place with the right filename.</p>
+
+<h2 id="toc_2">Custom Paths</h2>
+
+<p>The base path for your blog defaults to <code>/</code> (the root of your website) but can be overridden in <code>config.rb</code>:</p>
+
+<pre><code class="ruby">activate :blog do |blog|
+  blog.prefix = &quot;blog&quot;
+end
+</code></pre>
+
+<p>All other settings (<code>permalink</code>, <code>tag_path</code>, etc.) are added on to <code>prefix</code>, so you don&#39;t need to repeat it in every setting.</p>
+
+<p>The permalink for viewing your posts can changed on its own as well:</p>
+
+<pre><code class="ruby">activate :blog do |blog|
+  blog.permalink = &quot;blog/:year/:title.html&quot;
+end
+</code></pre>
+
+<p>Now, your articles will show up at: <code>blog/2011/blog.html</code>. Your permalink can be totally independent from the format your posts are stored at. By default, the permalink path is <code>:year/:month/:day/:title.html</code>. You might also consider enabling the <a href="/pretty-urls/">pretty urls</a> feature if you want your blog posts to appear as directories instead of HTML files.</p>
+
+<h2 id="toc_3">Draft Articles</h2>
+
+<p>Articles can be marked as draft in the frontmatter:</p>
+
+<pre><code class="html">---
+title: Work In Progress
+published: false
+---
+
+Unfinished Draft
+</code></pre>
+
+<p>Unpublished articles will only appear in development mode.</p>
+
+<p>An articles with a date that is in the future is also considered unpublished; if you use a <code>cron</code> job to regenerate your site on a regular basis, this can be used to automatically publish articles at a specified time.</p>
+
+<h2 id="toc_4">Timezone</h2>
+
+<p>To get accurate publication times in your RSS feed, and for automatically publishing articles on a precise schedule, set your blog&#39;s timezone in <code>config.rb</code>:</p>
+
+<pre><code class="ruby">Time.zone = &quot;Tokyo&quot;
+</code></pre>
+
+<h2 id="toc_5">Summary</h2>
+
+<p>By default, articles can be truncated when viewed outside their permalink page. The blogging extension looks for <code>READMORE</code> in your article text and only shows content before this text on the homepage, but strips this metadata on the permalink page.</p>
+
+<p>This can be changed in <code>config.rb</code>:</p>
+
+<pre><code class="ruby">activate :blog do |blog|
+  blog.summary_separator = /SPLIT_SUMMARY_BEFORE_THIS/
+end
+</code></pre>
+
+<p>You can use the summary in templates from the <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/BlogArticle#summary-instance_method"><code>summary</code></a> attribute of a <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/BlogArticle"><code>BlogArticle</code></a>.</p>
+
+<p><code>summary</code> is actually a method which takes an optional length to chop summaries down to, and a string to use when the text is truncated:</p>
+
+<pre><code class="erb">&lt;%= article.summary(250, &#39;&gt;&gt;&#39;) =&gt;
+</code></pre>
+
+<p>This would produce a summary of no more than 250 characters, followed by &quot;&gt;&gt;&quot;.</p>
+
+<p>Note that, in order to provide HTML-aware summaries, you must add <code>gem &#39;nokogiri&#39;</code> to your <code>Gemfile</code> in order to use summaries.</p>
+
+<p>If you have your own method of generating summaries, you can set <code>blog.summary_generator</code> to a <code>Proc</code> that takes the rendered blog post, desired length, and ellipsis string and produces a summary.</p>
+
+<h2 id="toc_6">Tags</h2>
+
+<p>What would blogging be without organizing articles around tags? Simply add a <code>tag</code> entry to your articles&#39; <a href="/frontmatter/">frontmatter</a>. Then, you can access the tags for a <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/BlogArticle"><code>BlogArticle</code></a> using the <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/BlogArticle#tags-instance_method"><code>tag</code></a> method, and you can get a list of all tags with their associated article from <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/BlogData#tags-instance_method"><code>blog.tags</code></a>. If you set the <code>blog.tag_template</code> setting in <code>config.rb</code> to a template (see <a href="https://github.com/middleman/middleman-blog/blob/master/lib/middleman-blog/template/config.tt">the default config.rb</a>) you can render a page for each tag. The tag template has the local variable <code>tagname</code> set to the current tag and <code>articles</code> set to a list of articles with that tag, and you can use the <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/Helpers#tag_path-instance_method"><code>tag_path</code></a> helper to generate links to a particular tag page.</p>
+
+<p>The default template produces a <a href="https://github.com/middleman/middleman-blog/blob/master/lib/middleman-blog/template/source/tag.html.erb"><code>tag.html</code></a> template for you that produces a page for each tag at <code>tags/TAGNAME.html</code>. Adding a couple tags to the above example would look like this:</p>
+
+<pre><code class="html">---
+title: My Middleman Blog Post
+date: 2011/10/18
+tags: blogging, middleman, hello, world
+---
+
+Hello World
+</code></pre>
+
+<p>Now you can find this article listed on <code>tags/blogging.html</code>.</p>
+
+<p>This path can be changed in <code>config.rb</code>:</p>
+
+<pre><code class="ruby">activate :blog do |blog|
+  blog.taglink = &quot;categories/:tag.html&quot;
+end
+</code></pre>
+
+<p>Now you can find this article listed on <code>categories/blogging.html</code>.</p>
+
+<h2 id="toc_7">Calendar Pages</h2>
+
+<p>Many blogging engines produce pages that list out all articles for a specific year, month, or day. Middleman does this using a <a href="https://github.com/middleman/middleman-blog/blob/master/lib/middleman-blog/template/source/calendar.html.erb"><code>calendar.html</code></a> template and the <code>blog.calendar_template</code> setting. The default template generates <a href="https://github.com/middleman/middleman-blog/blob/master/lib/middleman-blog/template/source/calendar.html.erb"><code>calendar.html</code></a> for you. This template gets <code>year</code>, <code>month</code>, and <code>day</code> variables set in it, as well as <code>articles</code> which is a list of articles for that day.</p>
+
+<p>If you only want certain calendar pages (say, year but not day), or if you want different templates for each type of calendar page, you can set <code>blog.year_template</code>, <code>blog.month_template</code>, and <code>blog.day_template</code> individually. Setting <code>blog.calendar_template</code> is just a shortcut for setting them all to the same thing.</p>
+
+<p>In templates, you can use the <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/Helpers#blog_year_path-instance_method"><code>blog_year_path</code></a>, <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/Helpers#blog_month_path-instance_method"><code>blog_month_path</code></a>, and <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/Helpers#blog_day_path-instance_method"><code>blog_day_path</code></a> helpers to generate links to your calendar pages. You can customize what those links look like with the <code>blog.year_link</code>, <code>blog.month_link</code>, and <code>blog.day_link</code> settings. By default, your calendar pages will look like <code>/2012.html</code>, <code>/2012/03.html</code>, and <code>/2012/03/15.html</code> for year, month, and day, respectively.</p>
+
+<h2 id="toc_8">Pagination</h2>
+
+<p>Long lists of articles can be split across multiple pages. A template will be split into pages if it has</p>
+
+<pre><code class="html">---
+pageable: true
+---
+</code></pre>
+
+<p>in the frontmatter, and pagination is enabled for the site in <code>config.rb</code>:</p>
+
+<pre><code class="ruby">activate :blog do |blog|
+  blog.paginate = true
+end
+</code></pre>
+
+<p>By default the second and subsequent pages will have links that look like <code>/2012/page/2.html</code>; this can be customized, along with the default number of articles per page, in <code>config.rb</code>. For example:</p>
+
+<pre><code class="ruby">activate :blog do |blog|
+  blog.paginate = true
+  blog.page_link = &quot;p:num&quot;
+  blog.per_page = 20
+end
+</code></pre>
+
+<p>will result in up to 20 articles per page and links that look like <code>/2012/p2.html</code>. The <code>per_page</code> parameter can also be set for an individual template in the template&#39;s frontmatter.</p>
+
+<p>Pageable templates can then use the following variables:</p>
+
+<pre><code class="ruby">paginate       # Set to true if pagination is enabled for this site.
+per_page       # The number of articles per page.
+
+page_articles  # The list of articles to display on this page.
+articles       # The complete list of articles for the template,
+
+page_number    # The number of this page.
+num_pages      # The total number of pages. Use with page_number for
+               # displaying &quot;Page X of Y&quot;
+
+page_start     # The number of the first article on this page.
+page_end       # The number of the last article on this page.
+               # Use with articles.length to show &quot;Articles X to Y of Z&quot;
+
+next_page      # The page resources for the next and previous pages
+prev_page      # in the sequence, or nil if there is no adjacent page.
+               # including this and all other pages.
+</code></pre>
+
+<p>If <code>paginate</code> is false and <code>per_page</code> is set in the template frontmatter, the <code>page_articles</code> variable will be set to the first <code>per_page</code> items in <code>articles</code>. This simplifies the creation of templates that can be used with and without pagination enabled.</p>
+
+<h2 id="toc_9">Layouts</h2>
+
+<p>You can set a specific <a href="/templates/#toc_3">layout</a> to be used for all articles in your <code>config.rb</code>:</p>
+
+<pre><code class="ruby">activate :blog do |blog|
+  blog.layout = &quot;blog_layout&quot;
+end
+</code></pre>
+
+<p>If you want to wrap each article in a bit of structure before inserting it into a layout, you can use Middleman&#39;s <a href="/templates/#toc_4">nested layouts</a> feature to create an article layout that is then wrapped with your main layout.</p>
+
+<h2 id="toc_10">Article Data</h2>
+
+<p>The list of articles in your blog is accessible from templates as <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/BlogData#articles-instance_method"><code>blog.articles</code></a>, which returns a list of <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/BlogArticle"><code>BlogArticle</code></a>s.</p>
+
+<p>Each <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/BlogArticle"><code>BlogArticle</code></a> has some informative methods on it, and can also produce the <a href="http://rubydoc.info/github/middleman/middleman/master/Middleman/Sitemap/Resource"><code>Resource</code></a> from the <a href="/advanced/sitemap">sitemap</a> which has even more information (such as the <a href="http://rubydoc.info/github/middleman/middleman/master/Middleman/Sitemap/Resource#data-instance_method"><code>data</code></a> from your <a href="/frontmatter/">frontmatter</a>)</p>
+
+<p>For example, the following shows the 5 most-recent articles and their summary:</p>
+
+<pre><code class="html">&lt;% blog.articles[0...5].each do |article| %&gt;
+  &lt;article&gt;
+    &lt;h1&gt;
+      &lt;a href=&quot;&lt;%= article.url %&gt;&quot;&gt;&lt;%= article.title %&gt;&lt;/a&gt;
+      &lt;time&gt;&lt;%= article.date.strftime(&#39;%b %e %Y&#39;) %&gt;&lt;/time&gt;
+    &lt;/h1&gt;
+
+    &lt;%= article.summary %&gt;
+
+    &lt;a href=&quot;&lt;%= article.url %&gt;&quot;&gt;Read more&lt;/a&gt;&lt;/div&gt;
+  &lt;/article&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<p>You can also get access to the tag data for a tag archive:</p>
+
+<pre><code class="html">&lt;ul&gt;
+  &lt;% blog.tags.each do |tag, articles| %&gt;
+    &lt;li&gt;
+      &lt;h5&gt;&lt;%= tag %&gt;&lt;/h5&gt;
+      &lt;ul&gt;
+        &lt;% articles.each do |article| %&gt;
+          &lt;li&gt;&lt;a href=&quot;&lt;%= article.url %&gt;&quot;&gt;&lt;%= article.title %&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;% end %&gt;
+      &lt;/ul&gt;
+  &lt;% end %&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>Or similarly for a calendar list:</p>
+
+<pre><code class="html">&lt;ul&gt;
+  &lt;% blog.articles.group_by {|a| a.date.year }.each do |year, articles| %&gt;
+    &lt;li&gt;
+      &lt;h5&gt;&lt;%= year %&gt;&lt;/h5&gt;
+      &lt;ul&gt;
+        &lt;% articles.each do |article| %&gt;
+          &lt;li&gt;&lt;a href=&quot;&lt;%= article.url %&gt;&quot;&gt;&lt;%= article.title %&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;% end %&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;% end %&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>Or if you added a <code>public</code> flag to your front matter:</p>
+
+<pre><code class="html">&lt;h1&gt;Public Articles&lt;/h1&gt;
+&lt;% blog.articles.select {|a| a.page.data[:public] }.each do |article| %&gt;
+  ...
+&lt;% end %&gt;
+</code></pre>
+
+<h2 id="toc_11">Article Subdirectory</h2>
+
+<p>A subdirectory named according to a blog article without the extensions can be filled with files that will be copied to the right place in the build output. For example, the following directory structure:</p>
+
+<pre><code>source/2011-10-18-middleman.html.markdown
+source/2011-10-18-middleman/photo.jpg
+source/2011-10-18-middleman/source_code.rb
+</code></pre>
+
+<p>might be output (if <a href="/pretty-urls/"><code>directory_indexes</code></a> is turned on) as:</p>
+
+<pre><code>build/2011/10/18/middleman/index.html
+build/2011/10/18/middleman/photo.jpg
+build/2011/10/18/middleman/source_code.rb
+</code></pre>
+
+<p>This allows files (e.g. images) that belong to a single blog article to be kept with that article in the source and in the output. Depending on your blog structure, this may make it possible to use relative links in your article, although you need to be careful if your article content is used elsewhere in your site, e.g. calendar and tag pages.</p>
+
+<h2 id="toc_12">Helpers</h2>
+
+<p>There are <a href="http://rubydoc.info/github/middleman/middleman-blog/master/Middleman/Blog/Helpers">several helpers</a> to use in your templates to make things simpler. They allow you to do things like get the current article, see if the current page is a blog article, or build paths for tag and calendar pages.</p>
+
+    </article>
+
+    <div id="support">
+  <div class="donate">
+    <h4>Support Us</h4>
+    <p><a href="https://spb.io/s/4dXbHBorC3" target="_blank" class="sbe-button">With a Donation</a></p>
+  </div>
+
+  <div class="sponsor">
+    <h4>Sponsor</h4>
+    <a href="http://fjords.cc" target="_blank">
+      <img src="../images/fjords.jpg" />
+      <span>Fjords: Simple Middleman Hosting &amp; Preview URLs</span>
+    </a>
+  </div>
+
+  <!-- BuySellAds Zone Code -->
+  <div id="bsap_1280677" class="bsarocks bsap_989fc05e297a314a92ad3f33cef85fd4"></div>
+  <!-- End BuySellAds Zone Code -->
+</div>
+  </div>
+
+    
+    <footer id="footer">
+      <div class="container">
+        <p class="copyright">
+          &copy; 2011-2013 <a href="http://awardwinningfjords.com">Thomas Reynolds</a>.
+        </p>
+        <p class="link"><a href="https://github.com/middleman/middleman-guides/blob/master/source/blogging.html.markdown">Fork and edit this guide on Github</a></p>
+      </div>
+    </footer>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="../javascripts/highlight.pack.js" type="text/javascript"></script>
+    <script src="../javascripts/toc.js" type="text/javascript"></script>
+    <link href="../stylesheets/solarized_light.css" media="screen" rel="stylesheet" type="text/css" />
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+  </body>
+</html>

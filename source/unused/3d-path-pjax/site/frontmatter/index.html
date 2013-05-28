@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <link href="../stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Questrial|Arvo" media="screen" rel="stylesheet" type="text/css" />
+    <title>Middleman: Frontmatter</title>
+  </head>
+  <body>
+
+      <header id="header">
+    <div class="container">
+      <h1><a class="logo" href="/"><img width="225" height="225" alt="Middleman" src="../images/mm-blue-w-text.svg" /></a></h1>
+      <p class="console">$ gem install middleman</p>
+      <a class="toc-nav-link icon-arrow-down" href="#toc">Menu</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav id="toc">
+      <div class="toc-block">
+  <h3>Middleman Basics</h3>
+  <ul>
+      <li><a href="/getting-started/">Getting Started</a></li>
+      <li><a href="/templates/">Templates</a></li>
+      <li><a href="/helpers/">Template Helpers</a></li>
+      <li><a href="/frontmatter/">Frontmatter</a></li>
+      <li><a href="/dynamic-pages/">Dynamic Pages</a></li>
+      <li><a href="/asset-pipeline/">Asset Pipeline</a></li>
+      <li><a href="/pretty-urls/">Pretty URLs (Directory Indexes)</a></li>
+      <li><a href="/livereload/">LiveReload</a></li>
+      <li><a href="/blogging/">Blogging</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>Advanced Features</h3>
+  <ul>
+      <li><a href="/advanced/configuration/">Configuring Your Site</a></li>
+      <li><a href="/advanced/local-data/">Local Data</a></li>
+      <li><a href="/advanced/localization/">Localization (i18n)</a></li>
+      <li><a href="/advanced/sitemap/">The Sitemap</a></li>
+      <li><a href="/advanced/rack-middleware/">Rack Middleware</a></li>
+      <li><a href="/advanced/custom/">Custom Extensions</a></li>
+      <li><a href="/advanced/file-size-optimization/">File Size Optimization</a></li>
+      <li><a href="/advanced/improving-cacheability/">Improving Cacheability</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>Community</h3>
+  <ul>
+      <li><a href="http://directory.middlemanapp.com/">Extensions</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/templates/all">Project Templates</a></li>
+      <li><a href="/community/deployment-solutions/">Deployment Solutions</a></li>
+      <li><a href="/community/built-using-middleman/">Sites Built Using Middleman</a></li>
+      <li><a href="http://forum.middlemanapp.com/" target="_blank">Community Forum</a></li>
+      <li><a href="https://github.com/middleman/middleman" target="_blank">GitHub Repository</a></li>
+  </ul>
+</div>
+    </nav>
+
+    <article id="main" role="main">
+      <h1 id="toc_0">Frontmatter</h1>
+
+<p>Frontmatter allows page-specific variables to be included at the top of a template using the YAML or JSON format.</p>
+
+<h2 id="toc_1">YAML Frontmatter</h2>
+
+<p>Let&#39;s take a simple ERb template, adding some frontmatter variables to change the layout for this specific page.</p>
+
+<pre><code class="html">---
+layout: &quot;custom&quot;
+my_list:
+  - one
+  - two
+  - three
+---
+
+&lt;h1&gt;List&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;% current_page.data.my_list.each do |f| %&gt;
+  &lt;li&gt;&lt;%= f %&gt;&lt;/li&gt;
+  &lt;% end %&gt;
+&lt;/ol&gt;
+</code></pre>
+
+<p>Frontmatter must come at the very top of the template and be separated from the rest of the current by a leading and trailing triple hyphen <code>---</code>. Inside this block, you can create new data which will be available in the template using the <code>current_page.data</code> hash. The <code>layout</code> setting will pass directly to Middleman and change which layout is being used for rendering. You can also set <code>ignore</code>, <code>directory_index</code>, and some other page properties in this way.</p>
+
+<h2 id="toc_2">JSON Frontmatter</h2>
+
+<p>You can also use JSON for your frontmatter. It&#39;s delimited by <code>;;;</code> and looks like this:</p>
+
+<pre><code class="html">;;;
+&quot;layout&quot;: &quot;custom&quot;,
+&quot;my_list&quot;: [
+  &quot;one&quot;,
+  &quot;two&quot;,
+  &quot;three&quot;
+]
+;;;
+</code></pre>
+
+<p>After that, it can be used exactly the same as YAML frontmatter in your page.</p>
+
+    </article>
+
+    <div id="support">
+  <div class="donate">
+    <h4>Support Us</h4>
+    <p><a href="https://spb.io/s/4dXbHBorC3" target="_blank" class="sbe-button">With a Donation</a></p>
+  </div>
+
+  <div class="sponsor">
+    <h4>Sponsor</h4>
+    <a href="http://fjords.cc" target="_blank">
+      <img src="../images/fjords.jpg" />
+      <span>Fjords: Simple Middleman Hosting &amp; Preview URLs</span>
+    </a>
+  </div>
+
+  <!-- BuySellAds Zone Code -->
+  <div id="bsap_1280677" class="bsarocks bsap_989fc05e297a314a92ad3f33cef85fd4"></div>
+  <!-- End BuySellAds Zone Code -->
+</div>
+  </div>
+
+    
+    <footer id="footer">
+      <div class="container">
+        <p class="copyright">
+          &copy; 2011-2013 <a href="http://awardwinningfjords.com">Thomas Reynolds</a>.
+        </p>
+        <p class="link"><a href="https://github.com/middleman/middleman-guides/blob/master/source/frontmatter.html.markdown">Fork and edit this guide on Github</a></p>
+      </div>
+    </footer>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="../javascripts/highlight.pack.js" type="text/javascript"></script>
+    <script src="../javascripts/toc.js" type="text/javascript"></script>
+    <link href="../stylesheets/solarized_light.css" media="screen" rel="stylesheet" type="text/css" />
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+  </body>
+</html>

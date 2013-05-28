@@ -1,0 +1,71 @@
+@import "compass";
+
+* { box-sizing: border-box }
+
+#container {
+  -webkit-perspective: 800px;
+
+  position: absolute;
+  top: 60%;
+  left: 50%;
+}
+
+$max-sides: 20;
+$radius: 1000px;
+$plane-height: 300px;
+
+// $radius: $plane-width / (2 * sin(180 / $sides));
+
+#planes {
+  position: relative;
+  height: $plane-height;
+  -webkit-transform-style: preserve-3d;
+  & > div {
+    position: absolute;
+    height: $plane-height;
+    top: 0;
+    left: 0;
+    border: 1px solid black;
+    text-align: center;
+    line-height: $plane-height;
+    font-size: 30px;
+    color: white;
+    opacity: 0;
+    -webkit-transition: all 400ms ease-in-out;
+  }
+}
+
+@for $sides from 3 through $max-sides {
+  $plane-width: $radius / $sides;
+  $in-radius: $plane-width / (2 * tan(pi() / $sides));
+
+  .sides#{$sides} {
+    #container {
+      width: $plane-width;
+      height: $plane-height;
+      margin: -($plane-width / 2) 0 0 -($plane-width / 2);
+    }
+
+    #planes {
+      width: $plane-width;
+
+      & > div {
+        width: $plane-width;
+
+        @for $i from 1 through $sides {
+          $angle-delta: 360deg / $sides;
+          $angle: ($i - 1) * $angle-delta;
+          // $half-width: $plane-width / 2;
+
+          &:nth-of-type(#{$i}) {
+            background: green;
+            opacity: 0.9;
+            -webkit-transform: rotateY($angle) translateZ($in-radius);
+            &:after {
+              content: "Side #{$i}"; }
+          }
+        }
+      }
+    }
+  }
+}

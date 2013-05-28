@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+  <head>
+  </head>
+  <body>
+    <style>
+      @-webkit-keyframes translateX {
+         0% {   -webkit-transform: translateX(0); }
+         100% { -webkit-transform: translateX(100px); }
+      }
+
+      @-webkit-keyframes translateY {
+         0% {   -webkit-transform: translateY(0); }
+         100% { -webkit-transform: translateY(100px); }
+      }
+
+      @-webkit-keyframes translateZ {
+         0% {   -webkit-transform: translateZ(50px); }
+         100% { -webkit-transform: translateZ(-50px); }
+      }
+
+      @-webkit-keyframes rotateX {
+         0% {   -webkit-transform: rotateX(0); }
+         100% { -webkit-transform: rotateX(360deg); }
+      }
+
+      @-webkit-keyframes rotateY {
+         0% {   -webkit-transform: rotateY(0); }
+         100% { -webkit-transform: rotateY(360deg); }
+      }
+
+      @-webkit-keyframes rotateZ {
+         0% {   -webkit-transform: rotateZ(0); }
+         100% { -webkit-transform: rotateZ(360deg); }
+      }
+
+      .container {
+        padding: 100px;
+        position: relative;
+        float: left;
+        width: 200px;
+        -webkit-perspective: 1000px;
+      }
+
+      .container > div {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        -webkit-perspective-origin: 50% 50%;
+      }
+
+      .inner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+      #plane {
+        background: salmon;
+        -webkit-animation: translateX 2s linear alternate infinite;
+        top: 0;
+        left: 0;
+      }
+
+      #plane2 {
+        background: orange;
+        top: 0;
+        left: 250px;
+        -webkit-animation: translateY 2s linear alternate infinite;
+      }
+
+      #plane3 {
+        -webkit-perspective: 300px;
+        -webkit-perspective-origin: 50% 50%;
+      }
+        #plane3 .inner {
+          background: blue;
+          -webkit-animation: translateZ 2s linear alternate infinite;
+        }
+
+      #plane4 {
+        background: salmon;
+        -webkit-animation: rotateX 4s linear infinite;
+        top: 0;
+        left: 0;
+      }
+
+      #plane5 {
+        background: orange;
+        -webkit-animation: rotateY 4s linear infinite;
+        top: 0;
+        left: 150px;
+      }
+
+      #plane6 {
+        background: blue;
+        -webkit-animation: rotateZ 4s linear infinite;
+        top: 200px;
+        left: 100px;
+      }
+    </style>
+    <div class="container">
+      <h2>Translate</h2>
+      <div id="plane">X</div>
+      <div id="plane2">Y</div>
+      <div id="plane3"><div class="inner">Z</div></div>
+    </div>
+
+    <div class="container">
+      <h2>Rotate</h2>
+      <div id="plane4"><div class="inner">X</div></div>
+      <div id="plane5"><div class="inner">Y</div></div>
+      <div id="plane6"><div class="inner">Z</div></div>
+    </div>
+  </body>
+</html>

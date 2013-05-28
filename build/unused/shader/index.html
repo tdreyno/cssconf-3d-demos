@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      @-webkit-keyframes rotate1 {
+        0% {
+          -webkit-filter: custom(url(vert.vert) mix(url(frag.frag) normal source-atop),
+            4 1,
+            time 0.0,
+            transform perspective(600) translateZ(-400px) rotateY(0deg) rotateX(0deg)
+          );
+        }
+        100% {
+          -webkit-filter: custom(url(vert.vert) mix(url(frag.frag) normal source-atop),
+            4 1,
+            time 0.0,
+            transform perspective(600) translateZ(-400px) rotateY(360deg) rotateX(360deg)
+          );
+        }
+      }
+
+      #planes {
+        width: 1200px;
+        height: 300px;
+        -webkit-animation: rotate1 18s linear infinite;
+      }
+
+      #planes > div {
+        width: 300px;
+        height: 300px;
+        float: left;
+      }
+
+      #plane {
+        background: salmon;
+        /*-webkit-transform: translateZ(-150px);*/
+      }
+
+      #plane2 {
+        background: orange;
+        /*-webkit-transform: rotateY(90deg) translateZ(150px);*/
+      }
+
+      #plane3 {
+        background: blue;
+        /*-webkit-transform: rotateY(90deg) translateZ(-150px);*/
+      }
+
+      #plane4 {
+        background: green;
+        /*-webkit-transform: translateZ(150px);*/
+      }
+
+      @-webkit-keyframes rotate2 {
+        0% {
+          -webkit-filter: custom(url(sphere.vs) mix(url(sphere.fs) multiply source-atop), 50 50 border-box, amount 1, sphereRadius 0.35, sphereAxis -0.25 1 0, sphereRotation 0, ambientLight 0, lightPosition 0 0 0.25, lightColor 1 1 1 1, transform perspective(1000) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg));
+        }
+        100% {
+          -webkit-filter: custom(url(sphere.vs) mix(url(sphere.fs) multiply source-atop), 50 50 border-box, amount 1, sphereRadius 0.35, sphereAxis -0.25 1 0, sphereRotation 360, ambientLight 0, lightPosition 0 0 0.25, lightColor 1 1 1 1, transform perspective(1000) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg));
+        }
+      }
+
+      #sphere {
+        background: url(cat.jpg);
+        background-size: cover;
+        width: 300px;
+        height: 300px;
+        -webkit-animation: rotate2 18s linear infinite;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="container">
+      <div id="planes">
+        <div id="plane"></div>
+        <div id="plane2"></div>
+        <div id="plane3"></div>
+        <div id="plane4"></div>
+      </div>
+
+      <div id="sphere"></div>
+
+    </div>
+    <script>
+    </script>
+  </body>
+</html>

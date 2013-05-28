@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="stylesheets/axis.css">
+  </head>
+  <body class="sides4">
+    <h1>Translation</h1>
+    <input id="translatex" type="range" min="-300" max="300" step="0.01" value="0">
+    <input id="translatey" type="range" min="-300" max="300" step="0.01" value="0">
+    <input id="translatez" type="range" min="-600" max="400" step="0.01" value="0">
+
+    <h1>Rotation</h1>
+    <input id="rotationx" type="range" min="-180" max="180" step="0.01" value="0">
+    <input id="rotationy" type="range" min="-180" max="180" step="0.01" value="0">
+    <input id="rotationz" type="range" min="-180" max="180" step="0.01" value="0">
+
+    <h1>Sides</h1>
+    <input id="sides" type="range" min="3" max="20" step="1" value="4">
+
+    <div id="container">
+      <div id="planes">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <script>
+      var p = document.getElementById('planes');
+      var tX = document.getElementById('translatex');
+      var tY = document.getElementById('translatey');
+      var tZ = document.getElementById('translatez');
+      var rX = document.getElementById('rotationx');
+      var rY = document.getElementById('rotationy');
+      var rZ = document.getElementById('rotationz');
+
+      function update() {
+        p.style.webkitTransform = 'translate3d(' + tX.value + 'px, ' + tY.value + 'px, ' + tZ.value + 'px) rotateX(' + rX.value + 'deg) rotateY(' + rY.value + 'deg) rotateZ(' + rZ.value + 'deg)';
+
+        webkitRequestAnimationFrame(update);
+      }
+
+      update();
+
+      var sides = document.getElementById('sides');
+      sides.addEventListener('change', function() {
+        document.body.className = 'sides' + sides.value;
+      }, false);
+    </script>
+  </body>
+</html>

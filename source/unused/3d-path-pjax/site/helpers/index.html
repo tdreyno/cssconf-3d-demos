@@ -1,0 +1,374 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <link href="../stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Questrial|Arvo" media="screen" rel="stylesheet" type="text/css" />
+    <title>Middleman: Template Helpers</title>
+  </head>
+  <body>
+
+      <header id="header">
+    <div class="container">
+      <h1><a class="logo" href="/"><img width="225" height="225" alt="Middleman" src="../images/mm-blue-w-text.svg" /></a></h1>
+      <p class="console">$ gem install middleman</p>
+      <a class="toc-nav-link icon-arrow-down" href="#toc">Menu</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav id="toc">
+      <div class="toc-block">
+  <h3>Middleman Basics</h3>
+  <ul>
+      <li><a href="/getting-started/">Getting Started</a></li>
+      <li><a href="/templates/">Templates</a></li>
+      <li><a href="/helpers/">Template Helpers</a></li>
+      <li><a href="/frontmatter/">Frontmatter</a></li>
+      <li><a href="/dynamic-pages/">Dynamic Pages</a></li>
+      <li><a href="/asset-pipeline/">Asset Pipeline</a></li>
+      <li><a href="/pretty-urls/">Pretty URLs (Directory Indexes)</a></li>
+      <li><a href="/livereload/">LiveReload</a></li>
+      <li><a href="/blogging/">Blogging</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>Advanced Features</h3>
+  <ul>
+      <li><a href="/advanced/configuration/">Configuring Your Site</a></li>
+      <li><a href="/advanced/local-data/">Local Data</a></li>
+      <li><a href="/advanced/localization/">Localization (i18n)</a></li>
+      <li><a href="/advanced/sitemap/">The Sitemap</a></li>
+      <li><a href="/advanced/rack-middleware/">Rack Middleware</a></li>
+      <li><a href="/advanced/custom/">Custom Extensions</a></li>
+      <li><a href="/advanced/file-size-optimization/">File Size Optimization</a></li>
+      <li><a href="/advanced/improving-cacheability/">Improving Cacheability</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>Community</h3>
+  <ul>
+      <li><a href="http://directory.middlemanapp.com/">Extensions</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/templates/all">Project Templates</a></li>
+      <li><a href="/community/deployment-solutions/">Deployment Solutions</a></li>
+      <li><a href="/community/built-using-middleman/">Sites Built Using Middleman</a></li>
+      <li><a href="http://forum.middlemanapp.com/" target="_blank">Community Forum</a></li>
+      <li><a href="https://github.com/middleman/middleman" target="_blank">GitHub Repository</a></li>
+  </ul>
+</div>
+    </nav>
+
+    <article id="main" role="main">
+      <h1 id="toc_0">Template Helpers</h1>
+
+<p>Template helpers are methods which can be used in your dynamic templates to simplify common HTML tasks. Most of the basic methods should be very familiar to anyone who has used rails view helpers. These helpers are all built on the Padrino Framework, <a href="http://www.padrinorb.com/guides/application-helpers">view the full documentation here</a>.</p>
+
+<h2 id="toc_1">Link Helpers</h2>
+
+<p>Padrino provides a <code>link_to</code> function that you can use to make link tags. At its most basic, <code>link_to</code> takes the name and URL of a link:</p>
+
+<pre><code class="html">&lt;%= link_to &#39;My Site&#39;, &#39;http://mysite.com&#39; %&gt;
+</code></pre>
+
+<p><code>link_to</code> can also take a block, allowing you to provide more complex content for the link:</p>
+
+<pre><code class="html">&lt;% link_to &#39;http://mysite.com&#39; do %&gt;
+  &lt;%= image_tag &#39;mylogo.png&#39; %&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<p>Middleman enhances the <code>link_to</code> helper to be aware of the <a href="/advanced/sitemap/">sitemap</a>. If you refer to pages in your source folder (with their file extension minus all the template extensions) then <code>link_to</code> will generate the correct link, even if you have extensions like <a href="/pretty-urls/"><code>:directory_indexes</code></a> on. For example, if you had a file <code>source/about.html</code> and <code>:directory_indexes</code> on, you could link to it like this:</p>
+
+<pre><code class="html">&lt;%= link_to &#39;About&#39;, &#39;/about.html&#39; %&gt;
+
+Produces: &lt;a href=&#39;/about/&#39;&gt;About&lt;/a&gt;
+</code></pre>
+
+<p>You can also refer to source paths relative to your current page. Some people want their links to be relative to the current page. Pass <code>:relative =&gt; true</code> to <code>link_to</code> to get a relative URL.</p>
+
+<p>From within source/foo/index.html.erb, with <code>:directory_indexes</code> on:</p>
+
+<pre><code class="html">&lt;%= link_to &#39;About&#39;, &#39;/about.html&#39;, :relative =&gt; true %&gt;
+</code></pre>
+
+<p>Produces:</p>
+
+<pre><code class="html">&lt;a href=&#39;../about/&#39;&gt;About&lt;/a&gt;
+</code></pre>
+
+<p>If you want all URLs generated by <code>link_to</code> to be relative, add this to <code>config.rb</code>:</p>
+
+<pre><code class="ruby">set :relative_links, true
+</code></pre>
+
+<p>You can still override individual links to not be relative by adding <code>:relative =&gt; false</code>.</p>
+
+<p>You can include query parameters or URL fragments in your links as well:</p>
+
+<pre><code class="ruby">&lt;%= link_to &#39;My Form&#39;, &#39;/form.html&#39;, :query =&gt; { :foo =&gt; &#39;bar&#39; }, :fragment =&gt; &#39;deep&#39; %&gt;
+</code></pre>
+
+<p>Produces:</p>
+
+<pre><code class="html">&lt;a href=&#39;/form.html?foo=bar#deep&#39;&gt;My Form&lt;/a&gt;
+</code></pre>
+
+<p>If you just want the URL to a page without the link tag, use <code>url_for</code>. It powers all the magic in <code>link_to</code>, and is used in <code>form_tag</code> as well.</p>
+
+<h2 id="toc_2">Output Helpers</h2>
+
+<p>Output helpers are a collection of important methods for managing, capturing and displaying output in various ways and is used frequently to support higher-level helper functions. There are three output helpers worth mentioning: <code>content_for</code>, <code>capture_html</code>, and <code>concat_content</code>.</p>
+
+<p>The <code>content_for</code> functionality supports capturing content and then rendering this into a different place such as within a layout. One such example is including assets onto the layout from a template:</p>
+
+<pre><code class="html">&lt;% content_for :assets do %&gt;
+  &lt;%= stylesheet_link_tag &#39;index&#39;, &#39;custom&#39; %&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<p>Added to a template, this will capture the includes from the block and allow them to be yielded into the layout:</p>
+
+<pre><code class="html">&lt;head&gt;
+  &lt;title&gt;Example&lt;/title&gt;
+  &lt;%= stylesheet_link_tag &#39;style&#39; %&gt;
+  &lt;%= yield_content :assets %&gt;
+&lt;/head&gt;
+</code></pre>
+
+<p>This will automatically insert the contents of the block (in this case a stylesheet include) into the location the content is yielded within the layout.</p>
+
+<p>You can also check if a <code>content_for</code> block exists for a given key using <code>content_for?</code>:</p>
+
+<pre><code class="html">&lt;% if content_for?(:assets) %&gt;  
+  &lt;div&gt;&lt;%= yield_content :assets %&gt;&lt;/div&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<p>Also supports arguments yielded to the content block</p>
+
+<pre><code class="ruby">yield_content :head, param1, param2
+content_for(:head) { |param1, param2| ...content... }
+</code></pre>
+
+<h2 id="toc_3">Tag Helpers</h2>
+
+<p>Tag helpers are the basic building blocks used to construct html &quot;tags&quot; within a view template. There are three major functions for this category: <code>tag</code>, <code>content_tag</code> and <code>input_tag</code>.</p>
+
+<p>The tag and <code>content_tag</code> are for building arbitrary html tags with a name and specified options. If the tag contains &quot;content&quot; within then <code>content_tag</code> is used. For example:</p>
+
+<pre><code class="html">&lt;%= tag :img, :src =&gt; &quot;/my_image.png&quot; %&gt;
+  # =&gt; &lt;img src=&#39;/my_image.png&#39;&gt;
+
+&lt;%= content_tag :p, :class =&gt; &quot;stuff&quot; do %&gt;
+  Hello
+&lt;% end %&gt;
+  # =&gt; &lt;p class=&#39;stuff&#39;&gt;Hello&lt;/p&gt;
+</code></pre>
+
+<p>The input_tag is used to build tags that are related to accepting input from the user:</p>
+
+<pre><code class="ruby">input_tag :text, :class =&gt; &quot;demo&quot; 
+  # =&gt; &lt;input type=&#39;text&#39; class=&#39;demo&#39;&gt;
+input_tag :password, :value =&gt; &quot;secret&quot;, :class =&gt; &quot;demo&quot;
+  # =&gt; &lt;input type=&#39;password&#39; value=&#39;secret&#39; class=&#39;demo&#39;&gt;
+</code></pre>
+
+<h2 id="toc_4">Asset Helpers</h2>
+
+<p>Asset helpers are intended to help insert useful html onto a view template such as hyperlinks, mail_to links, images, stylesheets and javascript. An example of their uses would be on a simple view template:</p>
+
+<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+  &lt;%= stylesheet_link_tag &#39;layout&#39; %&gt;
+  &lt;%= javascript_include_tag &#39;application&#39; %&gt;
+  &lt;%= favicon_tag &#39;images/favicon.png&#39; %&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;&lt;%= link_to &#39;Blog&#39;, &#39;/blog&#39;, :class =&gt; &#39;example&#39; %&gt;&lt;/p&gt;
+  &lt;p&gt;Mail me at &lt;%= mail_to &#39;fake@faker.com&#39;, &quot;Fake Email Link&quot;, 
+                      :cc =&gt; &quot;test@demo.com&quot; %&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;%= image_tag &#39;padrino.png&#39;, :width =&gt; &#39;35&#39;, 
+           :class =&gt; &#39;logo&#39; %&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>You can use <code>auto_stylesheet_link_tag</code> and <code>auto_javascript_include_tag</code> to generate stylesheet and JS includes based on the current path, so if your page is &quot;contact.html&quot;, you&#39;ll get &quot;contact.css&quot; and &quot;contact.js&quot;.</p>
+
+<h2 id="toc_5">Form Helpers</h2>
+
+<p>Form helpers are the &quot;standard&quot; form tag helpers you would come to expect when building forms. A simple example of constructing a non-object form would be:</p>
+
+<pre><code class="html">&lt;% form_tag &#39;/destroy&#39;, :class =&gt; &#39;destroy-form&#39;, :method =&gt; &#39;delete&#39; do %&gt;
+  &lt;% field_set_tag do %&gt;
+    &lt;p&gt;
+      &lt;%= label_tag :username, :class =&gt; &#39;first&#39; %&gt;
+      &lt;%= text_field_tag :username, :value =&gt; params[:username] %&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;%= label_tag :password, :class =&gt; &#39;first&#39; %&gt;
+      &lt;%= password_field_tag :password, :value =&gt; params[:password] %&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;%= label_tag :strategy %&gt;
+      &lt;%= select_tag :strategy, :options =&gt; [&#39;delete&#39;, &#39;destroy&#39;],
+          :selected =&gt; &#39;delete&#39; %&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;%= check_box_tag :confirm_delete %&gt;
+    &lt;/p&gt;
+  &lt;% end %&gt;
+  &lt;% field_set_tag(:class =&gt; &#39;buttons&#39;) do %&gt;
+    &lt;%= submit_tag &quot;Remove&quot; %&gt;
+  &lt;% end %&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<h2 id="toc_6">Format Helpers</h2>
+
+<p>Format helpers are several useful utilities for manipulating the format of text to achieve a goal.
+The four format helpers are <code>escape_html</code>, <code>distance_of_time_in_words</code>, <code>time_ago_in_words</code>, and <code>js_escape_html</code>.</p>
+
+<p>The <code>escape_html</code> and <code>js_escape_html</code> function are for taking an html string and escaping certain characters.
+<code>escape_html</code> will escape ampersands, brackets and quotes to their HTML/XML entities. This is useful to sanitize user content before displaying this on a template. <code>js_escape_html</code> is used for passing javascript information from a js template to a javascript function.</p>
+
+<pre><code class="ruby">escape_html(&#39;&lt;hello&gt;&amp;&lt;goodbye&gt;&#39;) # =&gt; &amp;lt;hello&amp;gt;&amp;amp;&amp;lt;goodbye&amp;gt;
+</code></pre>
+
+<p>There is also an alias for <code>escape_html</code> called <code>h</code> for even easier usage within templates.</p>
+
+<p>Format helpers also includes a number of useful text manipulation functions such as <code>simple_format</code>, <code>pluralize</code>, <code>word_wrap</code>, and <code>truncate</code>.</p>
+
+<pre><code class="ruby">simple_format(&quot;hello\nworld&quot;) 
+  # =&gt; &quot;&lt;p&gt;hello&lt;br/&gt;world&lt;/p&gt;&quot;
+pluralize(2, &#39;person&#39;) 
+  # =&gt; &#39;2 people&#39;
+word_wrap(&#39;Once upon a time&#39;, :line_width =&gt; 8) 
+  # =&gt; &quot;Once upon\na time&quot;
+truncate(&quot;Once upon a time in a world far far away&quot;, :length =&gt; 8) 
+  # =&gt; &quot;Once upon...&quot;
+truncate_words(&quot;Once upon a time in a world far far away&quot;, :length =&gt; 4)
+  # =&gt; &quot;Once upon a time...&quot;
+highlight(&#39;Lorem dolor sit&#39;, &#39;dolor&#39;) 
+  # =&gt; &quot;Lorem &lt;strong class=&quot;highlight&quot;&gt;dolor&lt;/strong&gt; sit&quot;
+</code></pre>
+
+<h2 id="toc_7">Lorem Ipsum &amp; Placehold.it helpers</h2>
+
+<p>The <a href="https://github.com/blahed/frank">Frank project</a>, a static tool also inspired by Sinatra, has a wonderful set of helpers for generating random text content and placeholder images. I&#39;ve adapted this code for Middleman (god bless the MIT license).</p>
+
+<p>To use placeholder text:</p>
+
+<pre><code class="ruby">lorem.sentence      # returns a single sentence
+lorem.words 5       # returns 5 individual words
+lorem.word
+lorem.paragraphs 10 # returns 10 paragraphs 
+lorem.paragraph
+lorem.date          # accepts a strftime format argument
+lorem.name
+lorem.first_name
+lorem.last_name
+lorem.email
+</code></pre>
+
+<p>And to use placeholder images:</p>
+
+<pre><code class="ruby">lorem.image(&#39;300x400&#39;)
+  #=&gt; http://placehold.it/300x400
+lorem.image(&#39;300x400&#39;, :background_color =&gt; &#39;333&#39;, :color =&gt; &#39;fff&#39;)
+  #=&gt; http://placehold.it/300x400/333/fff
+lorem.image(&#39;300x400&#39;, :random_color =&gt; true)
+  #=&gt; http://placehold.it/300x400/f47av7/9fbc34d
+lorem.image(&#39;300x400&#39;, :text =&gt; &#39;blah&#39;)
+  #=&gt; http://placehold.it/300x400&amp;text=blah
+</code></pre>
+
+<h2 id="toc_8">Page Classes</h2>
+
+<p>It can be useful to generate classes on the <code>body</code> tag that correspond to the site hierarchy. <code>page_classes</code> generates those classes. Imagine you have a page at <code>projects/rockets/saturn-v.html</code>, and the following in your layout:</p>
+
+<pre><code class="erb">&lt;body class=&quot;&lt;%= page_classes %&gt;&quot;&gt;
+</code></pre>
+
+<p>You&#39;ll get:</p>
+
+<pre><code class="html">&lt;body class=&quot;projects rockets saturn-v&quot;&gt;
+</code></pre>
+
+<p>This makes it easy to apply project-specific, or rocket-specific styles to the page.</p>
+
+<h2 id="toc_9">Custom Defined Helpers</h2>
+
+<p>In addition to the helpers provided by Middleman out of the box, you can also add your own helper methods and classes that will be accessible within any controller or view automatically.</p>
+
+<p>To define a helper method, use the <code>helpers</code> block in <code>config.rb</code>:</p>
+
+<pre><code class="ruby">helpers do
+  def some_method
+    # ...do something here...
+  end
+end
+</code></pre>
+
+<p>Alternatively, you can created external Ruby modules which contain helpers and include them. You can put files in the <code>lib</code> directory. For example, if you were to extract the above helpers into a file named <code>lib/custom_helpers.rb</code>, you could create a module:</p>
+
+<pre><code class="ruby">module CustomHelpers
+  def some_method
+    # ...do something here...
+  end
+end
+</code></pre>
+
+<p>Then in <code>config.rb</code>:</p>
+
+<pre><code class="ruby">require &quot;lib/custom_helpers&quot;
+helpers CustomHelpers
+</code></pre>
+
+<p>An even easier way is to put your helpers in the <code>helpers</code> directory and name them after their module (i.e., <code>CustomHelpers</code> lives in <code>helpers/custom_helpers.rb</code>). Then, Middleman will automatically load them and register them as helpers. </p>
+
+    </article>
+
+    <div id="support">
+  <div class="donate">
+    <h4>Support Us</h4>
+    <p><a href="https://spb.io/s/4dXbHBorC3" target="_blank" class="sbe-button">With a Donation</a></p>
+  </div>
+
+  <div class="sponsor">
+    <h4>Sponsor</h4>
+    <a href="http://fjords.cc" target="_blank">
+      <img src="../images/fjords.jpg" />
+      <span>Fjords: Simple Middleman Hosting &amp; Preview URLs</span>
+    </a>
+  </div>
+
+  <!-- BuySellAds Zone Code -->
+  <div id="bsap_1280677" class="bsarocks bsap_989fc05e297a314a92ad3f33cef85fd4"></div>
+  <!-- End BuySellAds Zone Code -->
+</div>
+  </div>
+
+    
+    <footer id="footer">
+      <div class="container">
+        <p class="copyright">
+          &copy; 2011-2013 <a href="http://awardwinningfjords.com">Thomas Reynolds</a>.
+        </p>
+        <p class="link"><a href="https://github.com/middleman/middleman-guides/blob/master/source/helpers.html.markdown">Fork and edit this guide on Github</a></p>
+      </div>
+    </footer>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="../javascripts/highlight.pack.js" type="text/javascript"></script>
+    <script src="../javascripts/toc.js" type="text/javascript"></script>
+    <link href="../stylesheets/solarized_light.css" media="screen" rel="stylesheet" type="text/css" />
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+  </body>
+</html>

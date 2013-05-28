@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <link href="../../stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Questrial|Arvo" media="screen" rel="stylesheet" type="text/css" />
+    <title>Middleman: Improving Cacheability</title>
+  </head>
+  <body>
+
+      <header id="header">
+    <div class="container">
+      <h1><a class="logo" href="/"><img width="225" height="225" alt="Middleman" src="../../images/mm-blue-w-text.svg" /></a></h1>
+      <p class="console">$ gem install middleman</p>
+      <a class="toc-nav-link icon-arrow-down" href="#toc">Menu</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav id="toc">
+      <div class="toc-block">
+  <h3>Middleman Basics</h3>
+  <ul>
+      <li><a href="/getting-started/">Getting Started</a></li>
+      <li><a href="/templates/">Templates</a></li>
+      <li><a href="/helpers/">Template Helpers</a></li>
+      <li><a href="/frontmatter/">Frontmatter</a></li>
+      <li><a href="/dynamic-pages/">Dynamic Pages</a></li>
+      <li><a href="/asset-pipeline/">Asset Pipeline</a></li>
+      <li><a href="/pretty-urls/">Pretty URLs (Directory Indexes)</a></li>
+      <li><a href="/livereload/">LiveReload</a></li>
+      <li><a href="/blogging/">Blogging</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>Advanced Features</h3>
+  <ul>
+      <li><a href="/advanced/configuration/">Configuring Your Site</a></li>
+      <li><a href="/advanced/local-data/">Local Data</a></li>
+      <li><a href="/advanced/localization/">Localization (i18n)</a></li>
+      <li><a href="/advanced/sitemap/">The Sitemap</a></li>
+      <li><a href="/advanced/rack-middleware/">Rack Middleware</a></li>
+      <li><a href="/advanced/custom/">Custom Extensions</a></li>
+      <li><a href="/advanced/file-size-optimization/">File Size Optimization</a></li>
+      <li><a href="/advanced/improving-cacheability/">Improving Cacheability</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>Community</h3>
+  <ul>
+      <li><a href="http://directory.middlemanapp.com/">Extensions</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/templates/all">Project Templates</a></li>
+      <li><a href="/community/deployment-solutions/">Deployment Solutions</a></li>
+      <li><a href="/community/built-using-middleman/">Sites Built Using Middleman</a></li>
+      <li><a href="http://forum.middlemanapp.com/" target="_blank">Community Forum</a></li>
+      <li><a href="https://github.com/middleman/middleman" target="_blank">GitHub Repository</a></li>
+  </ul>
+</div>
+    </nav>
+
+    <article id="main" role="main">
+      <h1 id="toc_0">Improving Cacheability</h1>
+
+<p>To make your website render as quickly as possible, you should serve any assets, like JavaScript, CSS, or images, with proper headers that instruct web browsers to <a href="https://code.google.com/speed/page-speed/docs/caching.html">cache them for a very long time</a>. This means that when users visit your site again (or even just go to another page in your site) they don&#39;t have to re-download those assets. However, setting a far-future <code>Expires</code> or <code>Cache-Control</code> header can cause problems when you change your assets but users are still using their cached versions. Middleman has two approaches to solve this problem for you.</p>
+
+<h2 id="toc_1">Uniquely-named assets</h2>
+
+<p>The most effective technique for preventing users from using outdated files is to change the asset&#39;s filename every time you change one of your assets. Since that would be a pain to do by hand, Middleman comes with an <code>:asset_hash</code> extension that does it for you. First, activate the extension in your <code>config.rb</code>:</p>
+
+<pre><code class="ruby">activate :asset_hash
+</code></pre>
+
+<p>Now, refer to your assets as normal, with their original filename. You can use helpers like <code>image_tag</code> as well. However, when your site is built, each asset will be produced with a bit of extra text at the end of the filename that is tied to the content of the file, and all of your other files (HTML, CSS, JavaScript, etc) will be changed to reference that unique-ified filename instead of the original one. Now you can serve your assets with a &quot;never expire&quot; policy, but be sure that when you change them, they&#39;ll show up as a different filename.</p>
+
+<p>However, because this extension works by rewriting your files to reference the renamed assets, it&#39;s possible the extension might mess up and miss a reference, or do something you don&#39;t want to your code. In that case, you might have to fall back to the older cache buster method.</p>
+
+<p>If you want to exclude any files from being renamed, pass the <code>:ignore</code> option when activating <code>:asset_hash</code>, and give it one or more globs, regexes, or procs that identify the files to ignore. Likewise, you can pass an <code>:exts</code> option to change which file extensions are renamed.</p>
+
+<h2 id="toc_2">Configuring your server</h2>
+
+<p>Configuring your server to use far-future <code>Expires</code> and <code>Cache-Control</code> headers is different depending on which server you use. See Google&#39;s <a href="https://code.google.com/speed/page-speed/docs/caching.html">page speed docs</a> for links on how to configure your particular server, and run <a href="https://code.google.com/speed/page-speed/docs/extension.html">Google Page Speed</a> or <a href="https://addons.mozilla.org/en-US/firefox/addon/yslow/">YSlow</a> to check that you&#39;ve configured things correctly.</p>
+
+    </article>
+
+    <div id="support">
+  <div class="donate">
+    <h4>Support Us</h4>
+    <p><a href="https://spb.io/s/4dXbHBorC3" target="_blank" class="sbe-button">With a Donation</a></p>
+  </div>
+
+  <div class="sponsor">
+    <h4>Sponsor</h4>
+    <a href="http://fjords.cc" target="_blank">
+      <img src="../../images/fjords.jpg" />
+      <span>Fjords: Simple Middleman Hosting &amp; Preview URLs</span>
+    </a>
+  </div>
+
+  <!-- BuySellAds Zone Code -->
+  <div id="bsap_1280677" class="bsarocks bsap_989fc05e297a314a92ad3f33cef85fd4"></div>
+  <!-- End BuySellAds Zone Code -->
+</div>
+  </div>
+
+    
+    <footer id="footer">
+      <div class="container">
+        <p class="copyright">
+          &copy; 2011-2013 <a href="http://awardwinningfjords.com">Thomas Reynolds</a>.
+        </p>
+        <p class="link"><a href="https://github.com/middleman/middleman-guides/blob/master/source/advanced/improving-cacheability.html.markdown">Fork and edit this guide on Github</a></p>
+      </div>
+    </footer>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="../../javascripts/highlight.pack.js" type="text/javascript"></script>
+    <script src="../../javascripts/toc.js" type="text/javascript"></script>
+    <link href="../../stylesheets/solarized_light.css" media="screen" rel="stylesheet" type="text/css" />
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+  </body>
+</html>

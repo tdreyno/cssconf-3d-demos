@@ -1,0 +1,484 @@
+<style>
+  @-webkit-keyframes rotate-clipped {
+     from { -webkit-transform: rotateY(0deg); }
+     to { -webkit-transform: rotateY(180deg); }
+  }
+
+  @-webkit-keyframes rotate-clipped-back {
+     from { -webkit-transform: rotateY(180deg); }
+     to { -webkit-transform: rotateY(0deg); }
+  }
+
+  @-webkit-keyframes rotate-offcenter {
+     from { -webkit-transform: rotateY(0deg); }
+     to { -webkit-transform: translateX(-100%) rotateY(180deg); }
+  }
+
+  @-webkit-keyframes rotate-offcenter-back {
+     from { -webkit-transform: translateX(-100%) rotateY(180deg); }
+     to { -webkit-transform: rotateY(0deg); }
+  }
+
+  @-webkit-keyframes rotate-in-frame {
+    from {
+      -webkit-transform: translateZ(0) rotateY(0deg);
+    }
+    20% {
+      -webkit-transform: translateZ(-200px) rotateY(30deg);
+    }
+    80% {
+      -webkit-transform: translateZ(-200px) rotateY(150deg);
+    }
+    to {
+      -webkit-transform: translateZ(0) rotateY(180deg);
+    }
+  }
+
+  @-webkit-keyframes rotate-in-frame-back {
+    to {
+      -webkit-transform: translateZ(0) rotateY(0deg);
+    }
+    80% {
+      -webkit-transform: translateZ(-200px) rotateY(30deg);
+    }
+    20% {
+      -webkit-transform: translateZ(-200px) rotateY(150deg);
+    }
+    from {
+      -webkit-transform: translateZ(0) rotateY(180deg);
+    }
+  }
+
+  #parent { }
+
+  .intro.flipped #parent,
+  .ready.flipped #parent {
+    -webkit-animation-name: rotate-clipped;
+    -webkit-animation-duration: 800ms;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: forwards; }
+
+  .intro #parent,
+  .ready #parent {
+    -webkit-animation-name: rotate-clipped-back;
+    -webkit-animation-duration: 800ms;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: forwards; }
+
+  .zoomed.flipped #parent {
+    -webkit-animation-name: rotate-in-frame;
+    -webkit-animation-duration: 1200ms;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-fill-mode: forwards; }
+
+  .zoomed #parent {
+    -webkit-animation-name: rotate-in-frame-back;
+    -webkit-animation-duration: 1200ms;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-fill-mode: forwards; }
+
+  .offcenter.flipped #parent {
+    -webkit-animation-name: rotate-offcenter;
+    -webkit-animation-duration: 1200ms;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: forwards; }
+
+  .offcenter #parent {
+    -webkit-transform-origin: right center;
+
+    -webkit-animation-name: rotate-offcenter-back;
+    -webkit-animation-duration: 1200ms;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: forwards; }
+
+  #front, #back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 320px;
+    height: 465px;
+
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    background-size: 320px 465px;
+    background-repeat: no-repeat;
+    -webkit-transition: all 800ms ease-in-out; }
+
+    #front h1, #back h1 {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      position: absolute;
+      line-height: 1;
+      margin: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      text-shadow: black 0 0 6px;
+      color: white;
+      opacity: 0;
+      -webkit-transition: all 800ms ease-in-out; }
+
+      .open #front h1, .open #back h1,
+      .open-backface #front h1, .open-backface #back h1,
+      .overlapped #front h1, .overlapped #back h1 {
+        opacity: 1; }
+
+    #front {
+      background-image: url(../images/tobias.jpg); }
+
+    #back {
+      background-image: url(../images/tobias-2.jpg); }
+
+  .intro #back,
+  .ready #back,
+  .offcenter #back,
+  .zoomed #back {
+    -webkit-transform: rotateY(180deg); }
+
+  .open #container,
+  .open-backface #container,
+  .overlapped #container {
+    overflow: visible; }
+  .open #back,
+  .overlapped #back {
+    -webkit-backface-visibility: visible;
+    -moz-backface-visibility: visible;
+    backface-visibility: visible; }
+  .open #back,
+  .open-backface #back {
+    left: 320px; }
+  .open.flipped #back,
+  .open-backface.flipped #back,
+  .overlapped.flipped #back {
+    -webkit-transform: rotateY(180deg); }
+</style>
+
+<div id="back">
+  <h1>Back</h1>
+</div>
+
+<div id="front">
+  <h1>Front</h1>
+</div>
+
+<script>
+  var stateIndex = 0;
+  var states = [
+    'intro',
+    'open',
+    'open flipped',
+    'overlapped flipped',
+    'ready',
+    'offcenter',
+    'zoomed'
+  ];
+
+  var container = document.getElementById('container');
+  container.style.opacity = 0;
+
+  document.body.className = states[stateIndex];
+  setTimeout(function() {
+    container.style.opacity = 1;
+  }, 1000);
+
+  document.addEventListener('keyup', function(e) {
+    if (e.keyCode == 37) {
+      if (stateIndex > 0) {
+        stateIndex--;
+        document.body.className = states[stateIndex];
+      }
+    } else if (e.keyCode == 39) {
+      if (stateIndex < (states.length - 1)) {
+        stateIndex++;
+        document.body.className = states[stateIndex];
+      }
+    } else {
+      return;
+    }
+    
+    e.preventDefault();
+    e.stopPropagation();
+  });
+
+  document.addEventListener('dblclick', function(e) {
+    document.body.classList.toggle('flipped');
+
+    e.preventDefault();
+    e.stopPropagation();
+  });
+</script>
+
+<% content_for :outside do %>
+  <style>
+    @-webkit-keyframes orotate-clipped {
+       from { -webkit-transform: rotateZ(0deg); }
+       to { -webkit-transform: rotateZ(-180deg); }
+    }
+
+    @-webkit-keyframes orotate-clipped-back {
+       from { -webkit-transform: rotateZ(-180deg); }
+       to { -webkit-transform: rotateZ(0deg); }
+    }
+
+    @-webkit-keyframes orotate-offcenter {
+       from { -webkit-transform: rotateZ(0deg); }
+       to { -webkit-transform: translateX(-40%) rotateZ(-180deg); }
+    }
+
+    @-webkit-keyframes orotate-offcenter-back {
+       from { -webkit-transform: translateX(-40%) rotateZ(-180deg); }
+       to { -webkit-transform: rotateZ(0deg); }
+    }
+
+    @-webkit-keyframes orotate-in-frame {
+      from {
+        -webkit-transform: translateY(0) rotateZ(0deg);
+      }
+      20% {
+        -webkit-transform: translateY(-30px) rotateZ(-30deg);
+      }
+      80% {
+        -webkit-transform: translateY(-30px) rotateZ(-150deg);
+      }
+      to {
+        -webkit-transform: translateY(0) rotateZ(-180deg);
+      }
+    }
+
+    @-webkit-keyframes orotate-in-frame-back {
+      to {
+        -webkit-transform: translateY(0) rotateZ(0deg);
+      }
+      80% {
+        -webkit-transform: translateY(-30px) rotateZ(-30deg);
+      }
+      20% {
+        -webkit-transform: translateY(-30px) rotateZ(-150deg);
+      }
+      from {
+        -webkit-transform: translateY(0) rotateZ(-180deg);
+      }
+    }
+
+    #code {
+      position: absolute;
+      top: 227px;
+      left: 680px;
+      right: 0; }
+      .intro #code,
+      .intro #overhead {
+        display: none; }
+
+    #overhead {
+      position: absolute;
+      top: 20px;
+      left: 680px;
+      width: 300px;
+      height: 200px;
+      border: 2px solid black; }
+      #x, #z {
+        position: absolute;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none; }
+      #x {
+        top: -20px;
+        left: 42%; }
+      #z {
+        right: -20px;
+        top: 41%; }
+      #owrapper {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0; }
+
+  .ready.flipped #owrapper {
+    -webkit-animation-name: orotate-clipped;
+    -webkit-animation-duration: 800ms;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: forwards; }
+
+  .ready #owrapper {
+    -webkit-animation-name: orotate-clipped-back;
+    -webkit-animation-duration: 800ms;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: forwards; }
+
+  .offcenter.flipped #owrapper {
+    -webkit-animation-name: orotate-offcenter;
+    -webkit-animation-duration: 1200ms;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: forwards; }
+
+  .offcenter #owrapper {
+    -webkit-transform-origin: 70% center;
+
+    -webkit-animation-name: orotate-offcenter-back;
+    -webkit-animation-duration: 1200ms;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: forwards; }
+
+  .zoomed.flipped #owrapper {
+    -webkit-animation-name: orotate-in-frame;
+    -webkit-animation-duration: 1200ms;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-fill-mode: forwards; }
+
+  .zoomed #owrapper {
+    -webkit-animation-name: orotate-in-frame-back;
+    -webkit-animation-duration: 1200ms;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-fill-mode: forwards; }
+
+    #frontflat,
+    #backflat {
+      width: 140px;
+      height: 30px;
+      font-size: 20px;
+      line-height: 30px;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      margin-top: -6px;
+      left: 50%;
+      margin-left: -70px;
+      border: 2px solid black;
+      box-sizing: border-box;
+
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      -webkit-transition: all 800ms ease-in-out; 
+    }
+
+    #frontflat {
+      background: #d9d9d9;
+      color: black;
+    }
+
+    #backflat {
+      background: #ff9736;
+      color: black;
+    }
+
+    .ready #frontflat,
+    .offcenter #frontflat,
+    .zoomed #frontflat {
+      -webkit-transform: translateY(16px); }
+    .ready #backflat,
+    .offcenter #backflat,
+    .zoomed #backflat {
+      -webkit-transform: translateY(-16px) rotateZ(-180deg); }
+    .open #frontflat {
+      -webkit-transform: translateX(-71px); }
+    .open #backflat {
+      -webkit-transform: translateX(71px); }
+    .open.flipped #backflat {
+      -webkit-transform: rotateZ(-180deg) translateX(-71px) ; }
+    .overlapped #frontflat {
+      -webkit-transform: translateY(16px); }
+    .overlapped.flipped #frontflat {
+      -webkit-transform: translateY(-16px); }
+    .overlapped #backflat {
+      -webkit-transform: rotateZ(-180deg) translateY(16px); }
+    .overlapped.flipped #backflat {
+      -webkit-transform: rotateZ(-180deg) translateY(-16px); }
+
+    #code pre {
+      font-size: 16px;
+      display: none;
+      margin-top: 0;
+    }
+
+    .ready #code pre.ready-unflipped,
+    .open #code pre.open-unflipped,
+    .overlapped #code pre.overlapped-unflipped,
+    .offcenter #code pre.offcenter,
+    .zoomed #code pre.zoomed {
+      margin-bottom: 0;
+      display: block; }
+
+    .ready.flipped #code pre.ready-unflipped {
+      display: none; }
+
+    .ready.flipped #code pre.ready-flipped {
+      display: block; }
+
+    .open #code pre.open-unflipped {
+      display: block; }
+    .open.flipped #code pre.open-unflipped {
+      display: none; }
+    .open.flipped #code pre.open-flipped {
+      display: block; }
+    .offcenter #code pre.offcenter {
+      display: block;
+    }
+    .zoomed #code pre.zoomed {
+      display: block;
+    }
+  </style>
+  <div id="overhead">
+    <div id="owrapper">
+      <div id="frontflat">Front</div>
+      <div id="backflat">Back</div>
+    </div>
+    <div id="x">&larr; x &rarr;</div>
+    <div id="z">&uarr;<br>z<br>&darr;</div>
+  </div>
+  <div id="code">
+    <pre class="faded ready-unflipped open-unflipped open-flipped overlapped-unflipped offcenter zoomed"><code class="css">#container {
+  perspective: 1200px; }
+#parent {
+  transform-style: preserve-3d; }</code></pre>
+
+    <pre class="ready-flipped"><code class="css">#container {
+  perspective: 1200px; }
+#parent {
+  transform-style: preserve-3d;
+  transform: rotateY(180deg); }</code></pre>
+
+    <pre class="ready-unflipped ready-flipped"><code class="css">#front, #back {
+  backface-visibility: hidden; }
+#back {
+  transform: rotateY(180deg); }</code></pre>
+    <pre class="open-unflipped"><code class="css">#back {
+  transform: translateX(100%); }</code></pre>
+    <pre class="open-flipped"><code class="css">#back {
+  transform: rotateY(180deg)
+             translateX(100%); }</code></pre>
+  <pre class="overlapped-unflipped"><code class="css">#back {
+  transform: rotateY(180deg); }</code></pre>
+  <pre class="offcenter"><code class="css">@keyframes rotate-offcenter {
+   from {
+    transform: rotateY(0deg); }
+   to {
+    transform: translateX(-100%)
+               rotateY(180deg); }
+}
+#parent {
+  transform-origin: right center;
+  animation: rotate-offcenter; }</code></pre>
+  <pre class="zoomed"><code class="css">@keyframes rotate-zoom {
+  from {
+    transform: translateZ(0)
+               rotateY(0deg); }
+  20% {
+    transform: translateZ(-200px)
+               rotateY(30deg); }
+  80% {
+    transform: translateZ(-200px)
+               rotateY(150deg); }
+  to {
+    transform: translateZ(0)
+               rotateY(180deg); }
+}
+#parent {
+  animation: rotate-zoom; }</code></pre>
+  </div>
+<% end %>

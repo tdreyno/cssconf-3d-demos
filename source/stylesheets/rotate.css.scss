@@ -1,0 +1,126 @@
+$plane-width: 320px;
+$oplane-width: 140px;
+
+@each $sides in 4, 5, 8 {
+  $in-radius: $plane-width / (2 * tan(pi() / $sides));
+  $oin-radius: $oplane-width / (2 * tan(pi() / $sides));
+  $angle-delta: 360deg / $sides;
+
+  $mid-zoom: (10 - (8 - $sides)) / $sides;
+  $max-zoom: $mid-zoom + 0.05;
+
+  @-webkit-keyframes rotate-clipped-#{$sides} {
+    from {
+      -webkit-transform: translateZ(-$in-radius) rotateY(0deg);
+    }
+    20% {
+      -webkit-transform: translateZ(-$in-radius * $mid-zoom) rotateY((-$angle-delta * 0.2));
+    }
+    50% {
+      -webkit-transform: translateZ(-$in-radius * $max-zoom) rotateY((-$angle-delta * 0.5));
+    }
+    80% {
+      -webkit-transform: translateZ(-$in-radius * $mid-zoom) rotateY((-$angle-delta * 0.8));
+    }
+    to {
+      -webkit-transform: translateZ(-$in-radius) rotateY(-$angle-delta);
+    }
+  }
+
+  @-webkit-keyframes rotate-clipped-back-#{$sides} {
+    to {
+      -webkit-transform: translateZ(-$in-radius) rotateY(0deg);
+    }
+    80% {
+      -webkit-transform: translateZ(-$in-radius * $mid-zoom) rotateY((-$angle-delta * 0.2));
+    }
+    50% {
+      -webkit-transform: translateZ(-$in-radius * $max-zoom) rotateY((-$angle-delta * 0.5));
+    }
+    20% {
+      -webkit-transform: translateZ(-$in-radius * $mid-zoom) rotateY((-$angle-delta * 0.8));
+    }
+    from {
+      -webkit-transform: translateZ(-$in-radius) rotateY(-$angle-delta);
+    }
+  }
+
+  @-webkit-keyframes orotate-clipped-#{$sides} {
+    from {
+      -webkit-transform: translateY(50px) translateY(-$oin-radius) rotateZ(0deg);
+    }
+    20% {
+      -webkit-transform: translateY(50px) translateY(-$oin-radius * $mid-zoom) rotateZ(($angle-delta * 0.2));
+    }
+    50% {
+      -webkit-transform: translateY(50px) translateY(-$oin-radius * $max-zoom) rotateZ(($angle-delta * 0.5));
+    }
+    80% {
+      -webkit-transform: translateY(50px) translateY(-$oin-radius * $mid-zoom) rotateZ(($angle-delta * 0.8));
+    }
+    to {
+      -webkit-transform: translateY(50px) translateY(-$oin-radius) rotateZ($angle-delta);
+    }
+  }
+
+  @-webkit-keyframes orotate-clipped-back-#{$sides} {
+    to {
+      -webkit-transform: translateY(50px) translateY(-$oin-radius) rotateZ(0deg);
+    }
+    80% {
+      -webkit-transform: translateY(50px) translateY(-$oin-radius * $mid-zoom) rotateZ(($angle-delta * 0.2));
+    }
+    50% {
+      -webkit-transform: translateY(50px) translateY(-$oin-radius * $max-zoom) rotateZ(($angle-delta * 0.5));
+    }
+    20% {
+      -webkit-transform: translateY(50px) translateY(-$oin-radius * $mid-zoom) rotateZ(($angle-delta * 0.8));
+    }
+    from {
+      -webkit-transform: translateY(50px) translateY(-$oin-radius) rotateZ($angle-delta);
+    }
+  }
+
+  .sides#{$sides} {
+    &.flipped #parent {
+      -webkit-animation-name: rotate-clipped-#{$sides};
+      -webkit-animation-duration: 1000ms;
+      -webkit-animation-timing-function: linear;
+      -webkit-animation-fill-mode: forwards; }
+
+    #parent {
+      -webkit-animation-name: rotate-clipped-back-#{$sides};
+      -webkit-animation-duration: 1000ms;
+      -webkit-animation-timing-function: linear;
+      -webkit-animation-fill-mode: forwards; }
+
+    #first {
+      -webkit-transform: rotateY(0deg) translateZ($in-radius);
+    }
+
+    #second {
+      -webkit-transform: rotateY($angle-delta) translateZ($in-radius);
+    }
+
+    &.flipped #owrapper {
+      -webkit-animation-name: orotate-clipped-#{$sides};
+      -webkit-animation-duration: 1000ms;
+      -webkit-animation-timing-function: linear;
+      -webkit-animation-fill-mode: forwards; }
+
+    #owrapper {
+      -webkit-animation-name: orotate-clipped-back-#{$sides};
+      -webkit-animation-duration: 1000ms;
+      -webkit-animation-timing-function: linear;
+      -webkit-animation-fill-mode: forwards; }
+
+    #firstflat {
+      -webkit-transform: rotateZ(0deg) translateY($oin-radius - 14px);
+    }
+
+    #secondflat {
+      -webkit-transform: rotateZ(-$angle-delta) translateY($oin-radius - 14px);
+    }
+
+  }
+}

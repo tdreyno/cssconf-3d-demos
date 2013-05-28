@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+      html, body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      iframe {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+    </style>
+    <script src="three.js"></script>
+    <script src="CSS3DRenderer.js"></script>
+  </head>
+  <body>
+    <button onclick="go();">Go!</button>
+    <div id="container"></div>
+
+    <iframe id="page1" src="site/index.html" width="980" height="1000"></iframe>
+    <iframe id="page2" src="site/getting-started/index.html" width="980" height="1000"></iframe>
+    <iframe id="page3" src="site/blogging/index.html" width="980" height="1000"></iframe>
+
+
+    <script>
+      var camera, scene, renderer;
+      var controls;
+
+      // var objects = [];
+      var object, object2, object3;
+      var clock = new THREE.Clock();
+      var paths = [];
+      var pathsIndex = -1;
+      var pathCamera;
+      var pathDuration = 4;
+      var pathCurrentTime = 0;
+      var pathRunning = false;
+
+      init();
+      animate();
+
+      function init() {
+
+        camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
+        camera.position.z = 940;
+
+        paths.push(
+          new THREE.Spline([
+            new THREE.Vector3( 0, 0, 940 ),
+            new THREE.Vector3( 0, 0, 1500 ),
+            new THREE.Vector3( 1000, 0, 1000 ),
+            new THREE.Vector3( 0, 0, -1060 ),
+          ]),
+          new THREE.Spline([
+            new THREE.Vector3( 0, 0, -1060 ),
+            new THREE.Vector3( 0, 0, -560 ),
+            new THREE.Vector3( -1000, 0, -1000 ),
+            new THREE.Vector3( 0, 0, -3060 ),
+          ]),
+          new THREE.Spline([
+            new THREE.Vector3( 0, 0, -3060 ),
+            new THREE.Vector3( 6000, 0, -1060 )
+          ])
+        );
+
+        scene = new THREE.Scene();
+
+        object = new THREE.CSS3DObject( document.getElementById('page1') );
+        object.position.x = 0;
+        object.position.y = 0;
+        object.position.z = 0;
+        scene.add( object );
+
+        object2 = new THREE.CSS3DObject( document.getElementById('page2') );
+        object2.position.x = 0;
+        object2.position.y = 0;
+        object2.position.z = -2000;
+        scene.add( object2 );
+
+        object3 = new THREE.CSS3DObject( document.getElementById('page3') );
+        object3.position.x = 0;
+        object3.position.y = 0;
+        object3.position.z = -4000;
+        scene.add( object3 );
+        //
+
+        renderer = new THREE.CSS3DRenderer();
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        renderer.domElement.style.position = 'absolute';
+        document.getElementById( 'container' ).appendChild( renderer.domElement );
+
+        window.addEventListener( 'resize', onWindowResize, false );
+        onWindowResize();
+      }
+
+      function onWindowResize() {
+        var iframes = document.querySelectorAll('iframe');
+        for (var i = 0; i < iframes.length; i++) {
+          iframes[i].width = window.innerWidth;
+          iframes[i].height = window.innerHeight;
+        }
+
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize( window.innerWidth, window.innerHeight );
+
+      }
+
+      function animate() {
+
+        requestAnimationFrame( animate );
+        render();
+
+      }
+
+      function go() {
+        pathsIndex++;
+        pathRunning = true;
+        pathCurrentTime = 0;
+      }
+
+      function render() {
+
+        if (pathRunning) {
+          var delta = clock.getDelta();
+
+          pathCurrentTime += delta;
+
+          if (pathCurrentTime > pathDuration) {
+            pathRunning = false;
+            pathCurrentTime = pathDuration;
+          }
+
+          var path = paths[pathsIndex];
+
+          var cameraPosition = path.getPoint( pathCurrentTime / pathDuration);
+
+          camera.position.copy(cameraPosition);
+        }
+        
+        if (pathsIndex === 2) {
+          camera.lookAt(object2.position);
+          object.lookAt(camera.position);
+          object2.lookAt(camera.position);
+          object3.lookAt(camera.position);
+        }
+        renderer.render( scene, camera );
+
+      }
+
+    </script>
+  </body>
+</html>

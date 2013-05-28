@@ -1,0 +1,321 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <link href="../../stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Questrial|Arvo" media="screen" rel="stylesheet" type="text/css" />
+    <title>Middleman: Custom Extensions</title>
+  </head>
+  <body>
+
+      <header id="header">
+    <div class="container">
+      <h1><a class="logo" href="/"><img width="225" height="225" alt="Middleman" src="../../images/mm-blue-w-text.svg" /></a></h1>
+      <p class="console">$ gem install middleman</p>
+      <a class="toc-nav-link icon-arrow-down" href="#toc">Menu</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav id="toc">
+      <div class="toc-block">
+  <h3>Middleman Basics</h3>
+  <ul>
+      <li><a href="/getting-started/">Getting Started</a></li>
+      <li><a href="/templates/">Templates</a></li>
+      <li><a href="/helpers/">Template Helpers</a></li>
+      <li><a href="/frontmatter/">Frontmatter</a></li>
+      <li><a href="/dynamic-pages/">Dynamic Pages</a></li>
+      <li><a href="/asset-pipeline/">Asset Pipeline</a></li>
+      <li><a href="/pretty-urls/">Pretty URLs (Directory Indexes)</a></li>
+      <li><a href="/livereload/">LiveReload</a></li>
+      <li><a href="/blogging/">Blogging</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>Advanced Features</h3>
+  <ul>
+      <li><a href="/advanced/configuration/">Configuring Your Site</a></li>
+      <li><a href="/advanced/local-data/">Local Data</a></li>
+      <li><a href="/advanced/localization/">Localization (i18n)</a></li>
+      <li><a href="/advanced/sitemap/">The Sitemap</a></li>
+      <li><a href="/advanced/rack-middleware/">Rack Middleware</a></li>
+      <li><a href="/advanced/custom/">Custom Extensions</a></li>
+      <li><a href="/advanced/file-size-optimization/">File Size Optimization</a></li>
+      <li><a href="/advanced/improving-cacheability/">Improving Cacheability</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>Community</h3>
+  <ul>
+      <li><a href="http://directory.middlemanapp.com/">Extensions</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/templates/all">Project Templates</a></li>
+      <li><a href="/community/deployment-solutions/">Deployment Solutions</a></li>
+      <li><a href="/community/built-using-middleman/">Sites Built Using Middleman</a></li>
+      <li><a href="http://forum.middlemanapp.com/" target="_blank">Community Forum</a></li>
+      <li><a href="https://github.com/middleman/middleman" target="_blank">GitHub Repository</a></li>
+  </ul>
+</div>
+    </nav>
+
+    <article id="main" role="main">
+      <h1 id="toc_0">Custom Extensions</h1>
+
+<p>Middleman extensions are Ruby classes which can hook into various points of the Middleman system, add new features and manipulate content. This guide explains some of what&#39;s available, but you should read the middleman source and the source of plugins like middleman-blog to discover all the hooks and extension points.</p>
+
+<h2 id="toc_1">Basic Extension</h2>
+
+<p>The most basic extension looks like:</p>
+
+<pre><code class="ruby">class MyFeature &lt; Middleman::Extensio
+    def initialize(app, options_hash={}, &amp;block)
+      super
+    end
+    alias :included :registered
+  end
+end
+
+::Middleman::Extensions.register(:my_feature, MyFeature)
+</code></pre>
+
+<p>This module must be accessible to your <code>config.rb</code> file. Either define it directly in that file, or define it in another ruby file and <code>require</code> it in <code>config.rb</code></p>
+
+<p>Finally, once your module is included, you must activate it in <code>config.rb</code>:</p>
+
+<pre><code class="ruby">activate :my_feature
+</code></pre>
+
+<p>The <a href="http://rubydoc.info/github/middleman/middleman/master/Middleman/Extensions#register-class_method"><code>register</code></a> method lets you choose the name your extension is activated with. It can also take a block if you want to require files only when your extension is activated.</p>
+
+<p>In the <code>MyFeature</code> extension, the <code>initialize</code> method will be called as soon as the <code>activate</code> command is run. The <code>app</code> variable is a <a href="http://rubydoc.info/github/middleman/middleman/master/Middleman/Application"><code>Middleman::Application</code></a> class.</p>
+
+<p><code>activate</code> can also take an options hash (which are passed to <code>register</code>) or a block which can be used to configure your extension. You define options with the <code>options</code> class method and then access them with <code>options</code>:</p>
+
+<pre><code class="ruby">class MyFeature &lt; Middleman::Extension
+  # All the options for this extension
+  option :foo, false, &#39;Controls whether we foo&#39;
+
+  def initialize(app, options_hash={}, &amp;block)
+    super
+
+    puts options.foo
+  end
+end
+
+## Two ways to configure this extension
+activate :my_feature, :foo =&gt; &#39;whatever&#39;
+activate :my_feature do |f|
+  f.foo = &#39;whatever&#39;
+  f.bar = &#39;something else&#39;
+end
+</code></pre>
+
+<p>Passing options to <code>activate</code> is generally preferred to setting global variables via <code>set</code> to configure your extension (see the next section).</p>
+
+<h2 id="toc_2">Setting variables</h2>
+
+<p>The <a href="http://rubydoc.info/github/middleman/middleman/Middleman/Application"><code>Middleman::Application</code></a> class can be used to change global settings (variables using the <code>set</code> command) that can be used in your extension.</p>
+
+<pre><code class="ruby">class MyFeature &lt; Middleman::Extension
+  def initialize(app, options_hash={}, &amp;block)
+    super
+
+    app.set :css_dir, &quot;lib/my/css&quot;
+  end
+end
+</code></pre>
+
+<p>You can also use this ability to create new settings which can be accessed later in your extension.</p>
+
+<pre><code class="ruby">class MyFeature &lt; Middleman::Extension
+  def initialize(app, options_hash={}, &amp;block)
+    super
+
+    app.set :my_feature_setting, %w(one two three)
+  end
+
+  helpers do
+    def my_helper
+      my_feature_setting.to_sentence
+    end
+  end
+end
+</code></pre>
+
+<p><code>set</code> adds a new method to <code>Middleman::Application</code>, meaning you can read the value of your variable via <code>my_feature_setting</code> elsewhere. However, consider using <code>activate</code> options instead of global settings when only your extension needs a particular value.</p>
+
+<h2 id="toc_3">Adding Methods to config.rb</h2>
+
+<p>Methods available inside <code>config.rb</code> are simply class methods of <code>Middleman::Application</code>. Let&#39;s add a new method to be used in the <code>config.rb</code>:</p>
+
+<pre><code class="ruby">class MyFeature &lt; Middleman::Extension
+  def initialize(app, options_hash={}, &amp;block)
+    super
+    app.extend ClassMethods
+  end
+
+  module ClassMethods
+    def say_hello
+      puts &quot;Hello&quot;
+    end
+  end
+end
+</code></pre>
+
+<p>By extending the <code>Middleman::Application</code> class, available as <code>app</code>, we&#39;ve added a <code>say_hello</code> method to the environment which simply prints &quot;Hello&quot;. Internally, these methods are used to build lists of paths and requests which will be processed later in the app.</p>
+
+<h2 id="toc_4">Adding Helpers</h2>
+
+<p>Helpers are methods available inside your template. To add helper methods, we do the following:</p>
+
+<pre><code class="ruby">class MyFeature &lt; Middleman::Extension
+  def initialize(app, options_hash={}, &amp;block)
+    super
+  end
+
+  helpers do
+    def make_a_link(url, text)
+      &quot;&lt;a href=&#39;#{url}&#39;&gt;#{text}&lt;/a&gt;&quot;
+    end
+  end
+end
+</code></pre>
+
+<p>Now, inside your templates, you will have access to a <code>make_a_link</code> method. Here&#39;s an example using an ERb template:</p>
+
+<pre><code class="html">&lt;h1&gt;&lt;%= make_a_link(&quot;http://example.com&quot;, &quot;Click me&quot;) %&gt;&lt;/h1&gt;
+</code></pre>
+
+<h2 id="toc_5">Sitemap Manipulators</h2>
+
+<p>You can modify or add pages in the <a href="/advanced/sitemap/">sitemap</a> by creating a Sitemap extension. The <a href="/pretty-urls/"><code>:directory_indexes</code></a> extension uses this feature to reroute normal pages to their directory-index version, and the <a href="/blogging/">blog extension</a> uses several plugins to generate tag and calendar pages. See <a href="http://rubydoc.info/github/middleman/middleman/Middleman/Sitemap/Store#register_resource_list_manipulator-instance_method">the <code>Sitemap::Store</code> class</a> for more details.</p>
+
+<pre><code class="ruby">class MyFeature &lt; Middleman::Extension
+  def initialize(app, options_hash={}, &amp;block)
+    super
+  end
+
+  def manipulate_resource_list(resources)
+    resources.each do |resource|
+      resource.destination_path.gsub!(&quot;original&quot;, &quot;new&quot;)
+    end
+  end
+end
+</code></pre>
+
+<h2 id="toc_6">Callbacks</h2>
+
+<p>There are many parts of the Middleman lifecycle that can be hooked into by extensions. These are some examples, but there are many more.</p>
+
+<h3 id="toc_7">after_configuration</h3>
+
+<p>Sometimes you will want to wait until the <code>config.rb</code> has been executed to run code. For example, if you rely on the <code>:css_dir</code> variable, you should wait until it has been set. For this, we&#39;ll use a callback:</p>
+
+<pre><code class="ruby">class MyFeature &lt; Middleman::Extension
+  def initialize(app, options_hash={}, &amp;block)
+    super
+  end
+
+  def after_configuration
+    the_users_setting = app.settings.css_dir
+    app.set :my_setting, &quot;#{the_users_setting}_with_my_suffix&quot;
+  end
+end
+</code></pre>
+
+<h3 id="toc_8">before</h3>
+
+<p>The before callback allows you to do processing right before Middleman renders the page. This can be useful for returning data from another source, or failing early.</p>
+
+<p>Here&#39;s an example:</p>
+
+<pre><code class="ruby">class MyFeature &lt; Middleman::Extension
+  def initialize(app, options_hash={}, &amp;block)
+    super
+    app.before do
+      app.set :currently_requested_path, request.path_info
+      true
+    end
+  end
+end
+</code></pre>
+
+<p>The above sets the <code>:currently_requested_path</code> value at the beginning of each request. Notice the return value of &quot;true.&quot; All blocks using <code>before</code> must return either true or false.</p>
+
+<h3 id="toc_9">after_build</h3>
+
+<p>This callback is used to execute code after the build process has finished. The <a href="https://github.com/middleman/middleman-smusher">middleman-smusher</a> extension uses this feature to compress all the images in the build folder after it has been built. It&#39;s also conceivable to integrate a deployment script after build.</p>
+
+<pre><code class="ruby">class MyFeature &lt; Middleman::Extension
+  def initialize(app, options_hash={}, &amp;block)
+    super
+    app.after_build do |builder|
+      builder.run &#39;./my_deploy_script.sh&#39;
+    end
+  end
+end
+</code></pre>
+
+<p>The <a href="http://rubydoc.info/github/middleman/middleman/master/Middleman/Cli/Build"><code>builder</code></a> parameter is the class that runs the build CLI, and you can use <a href="http://rubydoc.info/github/wycats/thor/master/Thor/Actions">Thor actions</a> from it.</p>
+
+<h3 id="toc_10">compass_config</h3>
+
+<p>Similarly, if your extension relies on variable and settings within Compass to be ready, use the <code>compass_config</code> callback.</p>
+
+<pre><code class="ruby">class MyFeature &lt; Middleman::Extension
+  def initialize(app, options_hash={}, &amp;block)
+    super
+
+    app.compass_config do |config|
+      # config is the Compass.configuration object
+      config.output_style = :compact
+    end
+  end
+end
+</code></pre>
+
+    </article>
+
+    <div id="support">
+  <div class="donate">
+    <h4>Support Us</h4>
+    <p><a href="https://spb.io/s/4dXbHBorC3" target="_blank" class="sbe-button">With a Donation</a></p>
+  </div>
+
+  <div class="sponsor">
+    <h4>Sponsor</h4>
+    <a href="http://fjords.cc" target="_blank">
+      <img src="../../images/fjords.jpg" />
+      <span>Fjords: Simple Middleman Hosting &amp; Preview URLs</span>
+    </a>
+  </div>
+
+  <!-- BuySellAds Zone Code -->
+  <div id="bsap_1280677" class="bsarocks bsap_989fc05e297a314a92ad3f33cef85fd4"></div>
+  <!-- End BuySellAds Zone Code -->
+</div>
+  </div>
+
+    
+    <footer id="footer">
+      <div class="container">
+        <p class="copyright">
+          &copy; 2011-2013 <a href="http://awardwinningfjords.com">Thomas Reynolds</a>.
+        </p>
+        <p class="link"><a href="https://github.com/middleman/middleman-guides/blob/master/source/advanced/custom.html.markdown">Fork and edit this guide on Github</a></p>
+      </div>
+    </footer>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="../../javascripts/highlight.pack.js" type="text/javascript"></script>
+    <script src="../../javascripts/toc.js" type="text/javascript"></script>
+    <link href="../../stylesheets/solarized_light.css" media="screen" rel="stylesheet" type="text/css" />
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+  </body>
+</html>
