@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <link href="../../stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Questrial|Arvo" media="screen" rel="stylesheet" type="text/css" />
+    <title>Middleman: File Size Optimization</title>
+  </head>
+  <body>
+
+      <header id="header">
+    <div class="container">
+      <h1><a class="logo" href="/"><img width="225" height="225" alt="Middleman" src="../../images/mm-blue-w-text.svg" /></a></h1>
+      <p class="console">$ gem install middleman</p>
+      <a class="toc-nav-link icon-arrow-down" href="#toc">Menu</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav id="toc">
+      <div class="toc-block">
+  <h3>Middleman Basics</h3>
+  <ul>
+      <li><a href="/getting-started/">Getting Started</a></li>
+      <li><a href="/templates/">Templates</a></li>
+      <li><a href="/helpers/">Template Helpers</a></li>
+      <li><a href="/frontmatter/">Frontmatter</a></li>
+      <li><a href="/dynamic-pages/">Dynamic Pages</a></li>
+      <li><a href="/asset-pipeline/">Asset Pipeline</a></li>
+      <li><a href="/pretty-urls/">Pretty URLs (Directory Indexes)</a></li>
+      <li><a href="/livereload/">LiveReload</a></li>
+      <li><a href="/blogging/">Blogging</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>Advanced Features</h3>
+  <ul>
+      <li><a href="/advanced/configuration/">Configuring Your Site</a></li>
+      <li><a href="/advanced/local-data/">Local Data</a></li>
+      <li><a href="/advanced/localization/">Localization (i18n)</a></li>
+      <li><a href="/advanced/sitemap/">The Sitemap</a></li>
+      <li><a href="/advanced/rack-middleware/">Rack Middleware</a></li>
+      <li><a href="/advanced/custom/">Custom Extensions</a></li>
+      <li><a href="/advanced/file-size-optimization/">File Size Optimization</a></li>
+      <li><a href="/advanced/improving-cacheability/">Improving Cacheability</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>Community</h3>
+  <ul>
+      <li><a href="http://directory.middlemanapp.com/">Extensions</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/templates/all">Project Templates</a></li>
+      <li><a href="/community/deployment-solutions/">Deployment Solutions</a></li>
+      <li><a href="/community/built-using-middleman/">Sites Built Using Middleman</a></li>
+      <li><a href="http://forum.middlemanapp.com/" target="_blank">Community Forum</a></li>
+      <li><a href="https://github.com/middleman/middleman" target="_blank">GitHub Repository</a></li>
+  </ul>
+</div>
+    </nav>
+
+    <article id="main" role="main">
+      <h1 id="toc_0">File Size Optimization</h1>
+
+<h2 id="toc_1">Compressing CSS and JavaScript</h2>
+
+<p>Middleman handles CSS minification and Javascript compression so you don&#39;t have to worry about it. Most libraries ship minified and compressed versions of their files for users to deploy, but these files are unreadable or editable. Middleman allows you to keep the original, commented files in our project so you can easily read them and edit them if needed. Then, when you build the project, Middleman will handle all the optimization for you.</p>
+
+<p>In your <code>config.rb</code>, activate the <code>minify_css</code> and <code>minify_javascript</code> features during the build of your site.</p>
+
+<pre><code class="ruby">configure :build do
+  activate :minify_css
+  activate :minify_javascript
+end
+</code></pre>
+
+<p>If you are already using a compressed file that includes <code>.min</code> in its filename, Middleman won&#39;t touch it. This can be good for libraries like jQuery which are carefully compressed by their authors ahead of time.</p>
+
+<p>You can customize how the JavaScript compressor works by setting the <code>:compressor</code> option when activating the <code>:minify_javascript</code> extension in <code>config.rb</code> to a custom instance of Uglifier. See <a href="https://github.com/lautis/uglifier">Uglifier&#39;s docs</a> for details. For example, you could enable unsafe optimizations and mangle top-level variable names like this:</p>
+
+<pre><code class="ruby">set :js_compressor, Uglifier.new(:toplevel =&gt; true, :unsafe =&gt; true)
+</code></pre>
+
+<p>If you want to exclude any files from being minified, pass the <code>:ignore</code> option when activating these extensions, and give it one or more globs, regexes, or procs that identify the files to ignore. Likewise, you can pass an <code>:exts</code> option to change which file extensions are renamed.</p>
+
+<p>You can speed up your JavaScript minification (and CoffeeScript builds) by including these gems in your <code>Gemfile</code>:</p>
+
+<pre><code class="ruby">gem &#39;therubyracer&#39; # faster JS compiles
+gem &#39;oj&#39; # faster JS compiles
+</code></pre>
+
+<h2 id="toc_2">GZIP text files</h2>
+
+<p>It&#39;s a good idea to <a href="http://developer.yahoo.com/performance/rules.html#gzip">serve compressed files</a> to user agents that can handle it. Many web servers have the ability to gzip files on the fly, but that requires CPU work every time the file is served, and as a result most servers don&#39;t perform the maximum compression. Middleman can produce gzipped versions of your HTML, CSS, and JavaScript alongside your regular files, and you can instruct your web server to serve those pre-gzipped files directly. First, enable the <code>:gzip</code> extension:</p>
+
+<pre><code class="ruby">activate :gzip
+</code></pre>
+
+<p>Then configure your server to serve those files. If you use Nginx, check out <a href="http://wiki.nginx.org/NginxHttpGzipStaticModule">the gzip_static</a> module. For Apache, you&#39;ll have to do something a little trickier - see <a href="https://gist.github.com/2200790">this Gist</a> for an example.</p>
+
+<h2 id="toc_3">Compressing Images</h2>
+
+<p>If you also want to compress images on build, you can use the <a href="https://github.com/middleman/middleman-smusher">Middleman Smusher extension</a> to dramatically shrink images using <a href="http://www.smushit.com/ysmush.it/">Yahoo&#39;s Smush.it tool</a>, though it&#39;s probably a better idea to compress your images once using a tool like <a href="http://pnggauntlet.com">PNGGauntlet</a> or <a href="http://imageoptim.pornel.net">ImageOptim</a> rather than every time you build your site.</p>
+
+<p>To install:</p>
+
+<pre><code class="bash">gem install middleman-smusher
+</code></pre>
+
+<p>Then activate in your <code>config.rb</code>:</p>
+
+<pre><code class="ruby">configure :build do
+  activate :smusher
+end
+</code></pre>
+
+<p>It&#39;s slightly harder to set up, but <a href="https://github.com/plasticine/middleman-imageoptim"><code>middleman-imageoptim</code></a> is faster and compresses better than <code>middleman-smusher</code>, and it doesn&#39;t require sending your images to a web service.</p>
+
+<h2 id="toc_4">Minify HTML</h2>
+
+<p>Middleman provides an official extension for minifying its HTML output. Simply install the gem:</p>
+
+<pre><code class="bash">gem install middleman-minify-html
+</code></pre>
+
+<p>Add <code>middleman-minify-html</code> to your Gemfile, open your <code>config.rb</code> and add</p>
+
+<pre><code class="ruby">activate :minify_html
+</code></pre>
+
+<p>You should notice whilst view-source:&#39;ing that your HTML is now being minified.</p>
+
+    </article>
+
+    <div id="support">
+  <div class="donate">
+    <h4>Support Us</h4>
+    <p><a href="https://spb.io/s/4dXbHBorC3" target="_blank" class="sbe-button">With a Donation</a></p>
+  </div>
+
+  <div class="sponsor">
+    <h4>Sponsor</h4>
+    <a href="http://fjords.cc" target="_blank">
+      <img src="../../images/fjords.jpg" />
+      <span>Fjords: Simple Middleman Hosting &amp; Preview URLs</span>
+    </a>
+  </div>
+
+  <!-- BuySellAds Zone Code -->
+  <div id="bsap_1280677" class="bsarocks bsap_989fc05e297a314a92ad3f33cef85fd4"></div>
+  <!-- End BuySellAds Zone Code -->
+</div>
+  </div>
+
+    
+    <footer id="footer">
+      <div class="container">
+        <p class="copyright">
+          &copy; 2011-2013 <a href="http://awardwinningfjords.com">Thomas Reynolds</a>.
+        </p>
+        <p class="link"><a href="https://github.com/middleman/middleman-guides/blob/master/source/advanced/file-size-optimization.html.markdown">Fork and edit this guide on Github</a></p>
+      </div>
+    </footer>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="../../javascripts/highlight.pack.js" type="text/javascript"></script>
+    <script src="../../javascripts/toc.js" type="text/javascript"></script>
+    <link href="../../stylesheets/solarized_light.css" media="screen" rel="stylesheet" type="text/css" />
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+  </body>
+</html>

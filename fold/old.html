@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      img { position: absolute; top: 0; left: 0;}
+
+      @-webkit-keyframes wave {
+        0%   { 
+          -webkit-filter: custom(url(vert.vert) mix(url(frag.frag) normal source-atop),
+            73 73,
+            time -1.0,
+            amplitude 40.0,
+            ripples 2.0,
+            transform perspective(1000) scale(1) rotateX(40deg) rotateY(0deg) rotateZ(0deg)
+          );
+        }
+        100% {
+          -webkit-filter: custom(url(vert.vert) mix(url(frag.frag) normal source-atop),
+            73 73,
+            time 1.0,
+            amplitude 40.0,
+            ripples 2.0,
+            transform perspective(1000) scale(1) rotateX(40deg) rotateY(0deg) rotateZ(0deg)
+          );
+        }
+      }
+      .customShader {
+        -webkit-animation: wave 2s infinite alternate;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe seamless src="http://cssconf.com/" width="500" height="500" border="0" class="customShader"></iframe>
+  </body>
+</html>

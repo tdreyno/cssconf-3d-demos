@@ -1,0 +1,467 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <link href="../stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Questrial|Arvo" media="screen" rel="stylesheet" type="text/css" />
+    <title>Middleman: Templates</title>
+  </head>
+  <body>
+
+      <header id="header">
+    <div class="container">
+      <h1><a class="logo" href="/"><img width="225" height="225" alt="Middleman" src="../images/mm-blue-w-text.svg" /></a></h1>
+      <p class="console">$ gem install middleman</p>
+      <a class="toc-nav-link icon-arrow-down" href="#toc">Menu</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <nav id="toc">
+      <div class="toc-block">
+  <h3>Middleman Basics</h3>
+  <ul>
+      <li><a href="/getting-started/">Getting Started</a></li>
+      <li><a href="/templates/">Templates</a></li>
+      <li><a href="/helpers/">Template Helpers</a></li>
+      <li><a href="/frontmatter/">Frontmatter</a></li>
+      <li><a href="/dynamic-pages/">Dynamic Pages</a></li>
+      <li><a href="/asset-pipeline/">Asset Pipeline</a></li>
+      <li><a href="/pretty-urls/">Pretty URLs (Directory Indexes)</a></li>
+      <li><a href="/livereload/">LiveReload</a></li>
+      <li><a href="/blogging/">Blogging</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>Advanced Features</h3>
+  <ul>
+      <li><a href="/advanced/configuration/">Configuring Your Site</a></li>
+      <li><a href="/advanced/local-data/">Local Data</a></li>
+      <li><a href="/advanced/localization/">Localization (i18n)</a></li>
+      <li><a href="/advanced/sitemap/">The Sitemap</a></li>
+      <li><a href="/advanced/rack-middleware/">Rack Middleware</a></li>
+      <li><a href="/advanced/custom/">Custom Extensions</a></li>
+      <li><a href="/advanced/file-size-optimization/">File Size Optimization</a></li>
+      <li><a href="/advanced/improving-cacheability/">Improving Cacheability</a></li>
+  </ul>
+</div>
+
+<div class="toc-block">
+  <h3>Community</h3>
+  <ul>
+      <li><a href="http://directory.middlemanapp.com/">Extensions</a></li>
+      <li><a href="http://directory.middlemanapp.com/#/templates/all">Project Templates</a></li>
+      <li><a href="/community/deployment-solutions/">Deployment Solutions</a></li>
+      <li><a href="/community/built-using-middleman/">Sites Built Using Middleman</a></li>
+      <li><a href="http://forum.middlemanapp.com/" target="_blank">Community Forum</a></li>
+      <li><a href="https://github.com/middleman/middleman" target="_blank">GitHub Repository</a></li>
+  </ul>
+</div>
+    </nav>
+
+    <article id="main" role="main">
+      <h1 id="toc_0">Templates</h1>
+
+<p>Middleman provides access to many templating languages to simplify your HTML development. The languages range from simply allowing you to use Ruby variables and loops in your pages, to providing a completely different format to write your pages in which compiles to HTML.  Middleman ships with support for the ERb, Haml, Sass, Scss and CoffeeScript engines. Many more engines can be enabled by including their Tilt-enabled gems. <a href="#toc_7">See the list below</a>.</p>
+
+<h2 id="toc_1">Template Basics</h2>
+
+<p>The default templating language is ERb. ERb looks exactly like HTML, except it allows you to add variables, call methods and use loops and if statements. The following sections of this guide will use ERb in their examples. </p>
+
+<p>All template files in Middleman include the extension of that templating language in their file name. A simple index page written in ERb would be named <code>index.html.erb</code> which includes the full filename, <code>index.html</code>, and the ERb extension.</p>
+
+<p>To begin, this file would just contain normal HTML: </p>
+
+<pre><code class="html">&lt;h1&gt;Welcome&lt;/h1&gt;
+</code></pre>
+
+<p>If we wanted to get fancy, we could add a loop:</p>
+
+<pre><code class="html">&lt;h1&gt;Welcome&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;% 5.times do |num| %&gt;
+    &lt;li&gt;Count &lt;%= num %&gt;
+  &lt;% end %&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<h2 id="toc_2">Layouts</h2>
+
+<p>Layouts allow the common HTML surrounding individual pages to be shared across all your templates. Developers coming from PHP will be used to the concept of &quot;header&quot; and &quot;footer&quot; includes which they reference at the top and bottom of every page. The Ruby world, and Middleman, take an inverse approach. The &quot;layout&quot; includes both the header and footer and then wraps the individual page content.</p>
+
+<p>The most basic layout has some shared content and a <code>yield</code> call where templates will place their contents. </p>
+
+<p>Here is an example layout using ERb:</p>
+
+<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;My Site&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;%= yield %&gt;
+&lt;/body&gt;
+&lt;/html&gt; 
+</code></pre>
+
+<p>Given a page template in ERb:</p>
+
+<pre><code class="html">&lt;h1&gt;Hello World&lt;/h1&gt;
+</code></pre>
+
+<p>The combined final output in HTML will be:</p>
+
+<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;My Site&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hello World&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Regarding file extensions and parsers, layouts have a different function from templates in the building process, so care should be taken in giving them the right extension. Here is why:</p>
+
+<p>As you might have gathered from the section on templates, file extensions are significant. For example, naming a layout file <code>layout.html.erb</code> would tell the language parser that it should take this file, which is erb and turn it into html.</p>
+
+<p>In a sense, reading the extensions from right to left, will tell you the parsings that the file will undergo, ending up as a file in the format of the leftmost extension. In the case of the example, converting an erb file to an html file when serving, and when building the file. </p>
+
+<p>Unlike templates, layouts should not be rendered to html. Giving a layout file the leftmost extension <code>.html</code> will cause an error when building. Therefore, you should stick to the template language extension only, i.e.: <code>layout.erb</code>.</p>
+
+<h3 id="toc_3">Custom Layouts</h3>
+
+<p>By default, Middleman will use the same layout file for every page in your site. However, you may want to use multiple layouts and specify which pages use these other layouts. For example, you may have a &quot;public&quot; site and an &quot;admin&quot; site which would each have their own layout files.</p>
+
+<p>The default layout file lives in the <code>source</code> folder and is called &quot;layout&quot; and has the extension of the templating language you are using. The default is <code>layout.erb</code>. Any alternate layouts you create should live in <code>source/layouts</code></p>
+
+<p>To create a new layout for admin, add another file to your <code>source/layouts</code> folder called &quot;admin.erb&quot;. Let&#39;s assume the contents are:</p>
+
+<pre><code class="html">    &lt;html&gt;
+    &lt;head&gt;
+      &lt;title&gt;Admin Area&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;%= yield %&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre>
+
+<p>Now, you need to specify which pages use this alternative layout. You can do this in two ways. If you want to apply this layout to a large group of pages, you can use the &quot;page&quot; command in your <code>config.rb</code>. Let&#39;s assume you have a folder called &quot;admin&quot; in your <code>source</code> folder and all the templates in admin should use the admin layout. The <code>config.rb</code> would look like:</p>
+
+<pre><code class="ruby">page &quot;/admin/*&quot;, :layout =&gt; &quot;admin&quot;
+</code></pre>
+
+<p>This uses a wildcard in the page path to specify that any page under the admin folder should use the admin layout. </p>
+
+<p>You can also reference pages directly. For example, let&#39;s say we have a <code>login.html.erb</code> template which lives in the source folder, but should also have the admin layout. Let&#39;s use this example page template:</p>
+
+<pre><code class="html">&lt;h1&gt;Login&lt;/h1&gt;
+&lt;form&gt;
+  &lt;input type=&quot;text&quot; placeholder=&quot;Email&quot;&gt;
+  &lt;input type=&quot;password&quot;&gt;
+  &lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+
+<p>Now you can specify that this specific page has a custom layout like this:</p>
+
+<pre><code class="ruby">page &quot;/login.html&quot;, :layout =&gt; &quot;admin&quot;
+</code></pre>
+
+<p>Which would make the login page use the admin layout. As an alternative to specifying everything in the <code>config.rb</code>, you can set the layout on individual pages in their template file using <a href="/frontmatter/">Frontmatter</a>. Here is an example <code>login.html.erb</code> page which specifies its own layout.</p>
+
+<pre><code class="html">---
+layout: admin
+---
+
+&lt;h1&gt;Login&lt;/h1&gt;
+&lt;form&gt;
+  &lt;input type=&quot;text&quot; placeholder=&quot;Email&quot;&gt;
+  &lt;input type=&quot;password&quot;&gt;
+  &lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+
+<h3 id="toc_4">Nested Layouts</h3>
+
+<p>Nested layouts allow you to create a stack of layouts. The easiest to understand use-case is the <code>middleman-blog</code> extension. Blog Articles are a subset of the entire site&#39;s content. They should contain additional content and structure, but should still end up wrapped by the site-wide structure (header, footer, etc).</p>
+
+<p>Here&#39;s what a simple default layout might look like:</p>
+
+<pre><code class="html">&lt;html&gt;
+  &lt;body&gt;
+    &lt;header&gt;Header&lt;/header&gt;
+    &lt;%= yield %&gt;
+    &lt;footer&gt;Footer&lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Let&#39;s say we have a blog article <code>blog/my-article.html.markdown</code>. I could then tell all the blog articles to use a <code>article_layout</code> layout instead of the default <code>layout</code>. In <code>config.rb</code>:</p>
+
+<pre><code class="ruby">page &quot;blog/*&quot;, :layout =&gt; :article_layout
+</code></pre>
+
+<p>That <code>layouts/article_layout.erb</code> layout would look like this</p>
+
+<pre><code class="html">&lt;% wrap_layout :layout do %&gt;
+  &lt;article&gt;
+    &lt;%= yield %&gt;
+  &lt;/article&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<p>Like a normal layout, <code>yield</code> is where the resulting template content is placed. In this example, you&#39;ve end up with the following output:</p>
+
+<pre><code class="html">&lt;html&gt;
+  &lt;body&gt;
+    &lt;header&gt;Header&lt;/header&gt;
+    &lt;article&gt;
+      &lt;!-- Contents of my template/blog article --&gt;
+    &lt;/article&gt;
+    &lt;footer&gt;Footer&lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h3 id="toc_5">Disabling Layouts Entirely</h3>
+
+<p>In some cases, you may not want to use a layout at all. This can be accomplished by setting the default layout to false in your <code>config.rb</code>:</p>
+
+<pre><code class="ruby">set :layout, false
+
+# Or for an individual file:
+page &#39;/foo.html&#39;, :layout =&gt; false
+</code></pre>
+
+<h2 id="toc_6">Partials</h2>
+
+<p>Partials are a way of sharing content across pages to avoid duplication. Partials can be used in page templates and layouts. Let&#39;s continue our above example of having two layouts: one for normal pages and one for admin pages. These two layouts could have duplicate content, such as a footer. We will create a footer partial and use it in both layouts.</p>
+
+<p>Partial files are prefixed with an underscore and include the templating language extension you are using. Here is an example footer partial named <code>_footer.erb</code> that lives in the <code>source</code> folder:</p>
+
+<pre><code class="html">&lt;footer&gt;
+  Copyright 2011
+&lt;/footer&gt;
+</code></pre>
+
+<p>Now, we can include this partial in the default layout using the &quot;partial&quot; method:</p>
+
+<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;My Site&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;%= yield %&gt;
+  &lt;%= partial &quot;footer&quot; %&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>And in the admin layout:</p>
+
+<pre><code class="html">&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Admin Area&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;%= yield %&gt;
+  &lt;%= partial &quot;footer&quot; %&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Now, any changes to <code>_footer.erb</code> will appear at the bottom of both layouts and any pages which use those layouts.</p>
+
+<p>If you find yourself copying and pasting content into multiple pages or layouts, it&#39;s probably a good idea to extract that content into a partial.</p>
+
+<p>After you start using partials, you may find you want to call it in different ways by passing variables. You can do this by:</p>
+
+<pre><code class="html">&lt;%= partial(:paypal_donate_button, :locals =&gt; { :amount =&gt; 1, :amount_text =&gt; &quot;Pay $1&quot; }) %&gt;
+&lt;%= partial(:paypal_donate_button, :locals =&gt; { :amount =&gt; 2, :amount_text =&gt; &quot;Pay $2&quot; }) %&gt;
+</code></pre>
+
+<p>Then, within the partial, you can set the text appropriately as follows:</p>
+
+<pre><code class="html">&lt;form action=&quot;https://www.paypal.com/cgi-bin/webscr&quot; method=&quot;post&quot;&gt;
+  &lt;input name=&quot;amount&quot; type=&quot;hidden&quot; value=&quot;&lt;%= &quot;#{amount}.00&quot; %&gt;&quot; &gt;
+  &lt;input type=&quot;submit&quot; value=&lt;%= amount_text %&gt; &gt;
+&lt;/form&gt;
+</code></pre>
+
+<p>Read the <a href="http://www.padrinorb.com/api/classes/Padrino/Helpers/RenderHelpers.html">Padrino partial helper</a> documentation for more information.</p>
+
+<h2 id="toc_7">Template Engine Options</h2>
+
+<p>You can set options for the various template engines in your <code>config.rb</code>:</p>
+
+<pre><code class="ruby">set :haml, { :ugly =&gt; true, :format =&gt; :html5 }
+</code></pre>
+
+<h2 id="toc_8">Markdown</h2>
+
+<p>You can choose your favorite Markdown library and set options for it in <code>config.rb</code>:</p>
+
+<pre><code class="ruby">set :markdown_engine, :redcarpet
+set :markdown, :fenced_code_blocks =&gt; true, :smartypants =&gt; true
+</code></pre>
+
+<p>When using RedCarpet, Middleman will handle links and image tags with its own helpers, meaning things like <code>:relative_links</code> and <code>:asset_hash</code> will do what you expect. However, the default Markdown engine is Kramdown because it&#39;s easier to install.</p>
+
+<h2 id="toc_9">Other Templating Languages</h2>
+
+<p>Here is the list of Tilt-enabled templating languages and the RubyGems which must be installed (and required in <code>config.rb</code>) for them to work (this list is from <a href="https://github.com/rtomayko/tilt/">Tilt</a>):</p>
+
+<table><thead>
+<tr>
+<th>ENGINE</th>
+<th>FILE EXTENSIONS</th>
+<th>REQUIRED LIBRARIES</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Slim</td>
+<td>.slim</td>
+<td>slim</td>
+</tr>
+<tr>
+<td>Erubis</td>
+<td>.erb, .rhtml, .erubis</td>
+<td>erubis</td>
+</tr>
+<tr>
+<td>Less CSS</td>
+<td>.less</td>
+<td>less</td>
+</tr>
+<tr>
+<td>Builder</td>
+<td>.builder</td>
+<td>builder</td>
+</tr>
+<tr>
+<td>Liquid</td>
+<td>.liquid</td>
+<td>liquid</td>
+</tr>
+<tr>
+<td>RDiscount</td>
+<td>.markdown, .mkd, .md</td>
+<td>rdiscount</td>
+</tr>
+<tr>
+<td>Redcarpet</td>
+<td>.markdown, .mkd, .md</td>
+<td>redcarpet</td>
+</tr>
+<tr>
+<td>BlueCloth</td>
+<td>.markdown, .mkd, .md</td>
+<td>bluecloth</td>
+</tr>
+<tr>
+<td>Kramdown</td>
+<td>.markdown, .mkd, .md</td>
+<td>kramdown</td>
+</tr>
+<tr>
+<td>Maruku</td>
+<td>.markdown, .mkd, .md</td>
+<td>maruku</td>
+</tr>
+<tr>
+<td>RedCloth</td>
+<td>.textile</td>
+<td>redcloth</td>
+</tr>
+<tr>
+<td>RDoc</td>
+<td>.rdoc</td>
+<td>rdoc</td>
+</tr>
+<tr>
+<td>Radius</td>
+<td>.radius</td>
+<td>radius</td>
+</tr>
+<tr>
+<td>Markaby</td>
+<td>.mab</td>
+<td>markaby</td>
+</tr>
+<tr>
+<td>Nokogiri</td>
+<td>.nokogiri</td>
+<td>nokogiri</td>
+</tr>
+<tr>
+<td>CoffeeScript</td>
+<td>.coffee</td>
+<td>coffee-script</td>
+</tr>
+<tr>
+<td>Creole (Wiki markup)</td>
+<td>.wiki, .creole</td>
+<td>creole</td>
+</tr>
+<tr>
+<td>WikiCloth (Wiki markup)</td>
+<td>.wiki, .mediawiki, .mw</td>
+<td>wikicloth</td>
+</tr>
+<tr>
+<td>Yajl</td>
+<td>.yajl</td>
+<td>yajl-ruby</td>
+</tr>
+<tr>
+<td>Stylus</td>
+<td>.styl</td>
+<td>ruby-stylus</td>
+</tr>
+</tbody></table>
+
+    </article>
+
+    <div id="support">
+  <div class="donate">
+    <h4>Support Us</h4>
+    <p><a href="https://spb.io/s/4dXbHBorC3" target="_blank" class="sbe-button">With a Donation</a></p>
+  </div>
+
+  <div class="sponsor">
+    <h4>Sponsor</h4>
+    <a href="http://fjords.cc" target="_blank">
+      <img src="../images/fjords.jpg" />
+      <span>Fjords: Simple Middleman Hosting &amp; Preview URLs</span>
+    </a>
+  </div>
+
+  <!-- BuySellAds Zone Code -->
+  <div id="bsap_1280677" class="bsarocks bsap_989fc05e297a314a92ad3f33cef85fd4"></div>
+  <!-- End BuySellAds Zone Code -->
+</div>
+  </div>
+
+    
+    <footer id="footer">
+      <div class="container">
+        <p class="copyright">
+          &copy; 2011-2013 <a href="http://awardwinningfjords.com">Thomas Reynolds</a>.
+        </p>
+        <p class="link"><a href="https://github.com/middleman/middleman-guides/blob/master/source/templates.html.markdown">Fork and edit this guide on Github</a></p>
+      </div>
+    </footer>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="../javascripts/highlight.pack.js" type="text/javascript"></script>
+    <script src="../javascripts/toc.js" type="text/javascript"></script>
+    <link href="../stylesheets/solarized_light.css" media="screen" rel="stylesheet" type="text/css" />
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+  </body>
+</html>

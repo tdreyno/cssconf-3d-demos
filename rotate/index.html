@@ -1,0 +1,366 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <title>Demo</title>
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
+    <style>
+      body {
+        padding: 77px 0 0 13px;
+        margin: 0;
+        font-family: sans-serif;
+        background: url('../images/chrome.png') no-repeat -20px -100px;
+      }
+
+      #container {
+        width: 320px;
+        height: 465px;
+        background: #1d1c1b;
+        overflow: hidden;
+        position: relative;
+
+        -webkit-perspective: 1200px;
+        -moz-perspective: 1200px;
+        perspective: 1200px;
+      }
+
+      #parent {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+      }
+    </style>
+  </head>
+  <body class="">
+    <div id="container"><div id="parent">
+      <link rel="stylesheet" href="../stylesheets/rotate.css">
+<style>
+  #parent { }
+
+  #first, #second {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 320px;
+    height: 465px;
+
+    background-repeat: no-repeat;
+    -webkit-transition: all 800ms ease-in-out; }
+
+    #first h1, #second h1 {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      position: absolute;
+      line-height: 1;
+      margin: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      text-shadow: black 0 0 6px;
+      color: white;
+      opacity: 0;
+      -webkit-transition: all 800ms ease-in-out; }
+
+      .open #first h1, .open #second h1,
+      .open-backface #first h1, .open-backface #second h1,
+      .overlapped #first h1, .overlapped #second h1 {
+        opacity: 1; }
+
+    #first {
+      background-image: url(../images/gob.jpg); }
+
+    #second {
+      background-image: url(../images/gob-2.jpg); }
+
+  .open #container,
+  .open-backface #container,
+  .overlapped #container {
+    overflow: visible; }
+</style>
+
+<div id="second">
+  <h1>Second</h1>
+</div>
+
+<div id="first">
+  <h1>First</h1>
+</div>
+
+<script>
+  var stateIndex = 0;
+  var states = [
+    'intro sides4',
+    'open sides4',
+    'open sides5',
+    'open sides8',
+    'ready sides8',
+  ];
+
+  var container = document.getElementById('container');
+  container.style.opacity = 0;
+
+  document.body.className = states[stateIndex];
+  setTimeout(function() {
+    container.style.opacity = 1;
+  }, 1000);
+
+  document.addEventListener('keyup', function(e) {
+    if (e.keyCode == 37) {
+      if (stateIndex > 0) {
+        stateIndex--;
+        document.body.className = states[stateIndex];
+      }
+    } else if (e.keyCode == 39) {
+      if (stateIndex < (states.length - 1)) {
+        stateIndex++;
+        document.body.className = states[stateIndex];
+      }
+    } else {
+      return;
+    }
+    
+    e.preventDefault();
+    e.stopPropagation();
+  });
+
+  document.addEventListener('dblclick', function(e) {
+    document.body.classList.toggle('flipped');
+
+    e.preventDefault();
+    e.stopPropagation();
+  });
+</script>
+
+
+    </div></div>
+
+      <style>
+    #code {
+      position: absolute;
+      top: 227px;
+      left: 680px;
+      right: 0; }
+      .intro #code,
+      .intro #overhead {
+        display: none; }
+
+    #overhead {
+      position: absolute;
+      top: 20px;
+      left: 680px;
+      width: 300px;
+      height: 200px;
+      border: 2px solid black; }
+      #x, #z {
+        position: absolute;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none; }
+      #x {
+        top: -20px;
+        left: 42%; }
+      #z {
+        right: -20px;
+        top: 41%; }
+      #owrapper {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0; }
+
+    #center {
+      width: 30px;
+      height: 30px;
+      font-size: 50px;
+      line-height: 30px;
+      position: absolute;
+      text-align: center;
+      top: 50%;
+      margin-top: 0px;
+      left: 50%;
+      margin-left: -15px;
+      box-sizing: border-box;
+
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;}
+
+    #firstflat,
+    #secondflat {
+      width: 140px;
+      height: 30px;
+      font-size: 20px;
+      line-height: 30px;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      margin-top: -6px;
+      left: 50%;
+      margin-left: -70px;
+      border: 2px solid black;
+      box-sizing: border-box;
+
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      -webkit-transition: all 800ms ease-in-out; 
+    }
+
+    #firstflat {
+      background: #d9d9d9;
+      color: black;
+    }
+
+    #secondflat {
+      background: #ff9736;
+      color: black;
+    }
+
+    #code pre {
+      font-size: 16px;
+      display: none;
+      margin-top: 0;
+    }
+
+    #code pre.always {
+      margin-bottom: 0;
+      display: block !important; }
+
+    .sides4 #code pre.sides4-unflipped {
+      display: block; }
+    .sides4.flipped #code pre.sides4-unflipped {
+      display: none; }
+    .sides4.flipped #code pre.sides4-flipped {
+      display: block; }
+    .sides5 #code pre.sides5-unflipped {
+      display: block; }
+    .sides5.flipped #code pre.sides5-unflipped {
+      display: none; }
+    .sides5.flipped #code pre.sides5-flipped {
+      display: block; }
+    .sides8 #code pre.sides8-unflipped {
+      display: block; }
+    .sides8.flipped #code pre.sides8-unflipped {
+      display: none; }
+    .sides8.flipped #code pre.sides8-flipped {
+      display: block; }
+  </style>
+  <div id="overhead">
+    <div id="owrapper">
+      <div id="center">*</div>
+      <div id="firstflat">Front</div>
+      <div id="secondflat">Back</div>
+    </div>
+    <div id="x">&larr; x &rarr;</div>
+    <div id="z">&uarr;<br>z<br>&darr;</div>
+  </div>
+  <div id="code">
+    <pre class="always"><code class="css">#container {
+  perspective: 1200px; }
+#parent {
+  transform-style: preserve-3d; }</code></pre>
+
+    
+      
+      
+      <pre class="sides4-unflipped sides4-flipped"><code class="css">/* width: 320
+ * sides: 4
+ * distance (160.0):
+ *   320 / (2 * tan(PI / 4))
+ * angle     (90.0):
+ *   360 / 4                 */
+#firstflat {
+  transform: rotateZ(0deg)
+             translateY(160.0px); }
+
+#secondflat {
+  transform: rotateZ(-90.0deg)
+             translateY(160.0px); }</code></pre>
+      <pre class="sides4-unflipped"><code class="css">#parent {
+  transform: translateZ(-160.0px)
+             rotateY(0deg); }</code></pre>
+      <pre class="sides4-flipped"><code class="css">#parent {
+  transform: translateZ(-160.0px)
+             rotateY(-90.0deg); }</code></pre>
+    
+      
+      
+      <pre class="sides5-unflipped sides5-flipped"><code class="css">/* width: 320
+ * sides: 5
+ * distance (220.2):
+ *   320 / (2 * tan(PI / 5))
+ * angle     (72.0):
+ *   360 / 5                 */
+#firstflat {
+  transform: rotateZ(0deg)
+             translateY(220.2px); }
+
+#secondflat {
+  transform: rotateZ(-72.0deg)
+             translateY(220.2px); }</code></pre>
+      <pre class="sides5-unflipped"><code class="css">#parent {
+  transform: translateZ(-220.2px)
+             rotateY(0deg); }</code></pre>
+      <pre class="sides5-flipped"><code class="css">#parent {
+  transform: translateZ(-220.2px)
+             rotateY(-72.0deg); }</code></pre>
+    
+      
+      
+      <pre class="sides8-unflipped sides8-flipped"><code class="css">/* width: 320
+ * sides: 8
+ * distance (386.3):
+ *   320 / (2 * tan(PI / 8))
+ * angle     (45.0):
+ *   360 / 8                 */
+#firstflat {
+  transform: rotateZ(0deg)
+             translateY(386.3px); }
+
+#secondflat {
+  transform: rotateZ(-45.0deg)
+             translateY(386.3px); }</code></pre>
+      <pre class="sides8-unflipped"><code class="css">#parent {
+  transform: translateZ(-386.3px)
+             rotateY(0deg); }</code></pre>
+      <pre class="sides8-flipped"><code class="css">#parent {
+  transform: translateZ(-386.3px)
+             rotateY(-45.0deg); }</code></pre>
+    
+
+    <!--pre class="ready-flipped"><code class="css">#container {
+  perspective: 1200px; }
+#parent {
+  transform-style: preserve-3d;
+  transform: rotateY(180deg); }</code></pre>
+
+    <pre class="ready-unflipped ready-flipped"><code class="css">#first, #second {
+  backface-visibility: hidden; }
+#second {
+  transform: rotateY(180deg); }</code></pre>
+    <pre class="open-unflipped"><code class="css">#second {
+  transform: translateX(100%); }</code></pre>
+    <pre class="open-flipped"><code class="css">#second {
+  transform: rotateY(180deg)
+             translateX(100%); }</code></pre>
+  <pre class="overlapped-unflipped"><code class="css">#second {
+  transform: rotateY(180deg); }</code></pre-->
+  </div>
+
+    <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+    <script>
+      hljs.tabReplace = '      ';
+      hljs.initHighlightingOnLoad();
+    </script>
+  </body>
+</html>

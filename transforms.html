@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      * { box-sizing: border-box }
+
+      body {
+        font-family: sans-serif;
+      }
+
+      #controls {
+        position: absolute;
+        top: 0;
+        left: 30px;
+        z-index: 1000;
+        font-size: 22px;
+      }
+
+      #container {
+        -webkit-perspective: 1200px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+
+      #code {
+        position: absolute;
+        left: 300px;
+        right: 0;
+        margin-top: 10px;
+        font-size: 26px;
+        line-height: 1.5;
+      }
+        #code:before {
+          content: "transform: ";
+        }
+
+      #planes {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -200px 0 0 -200px;
+        width: 400px;
+        height: 400px;
+        background: red;
+      }
+
+      #ground {
+        position: absolute;
+        width: 1200px;
+        height: 3600px;
+        top: 50%;
+        left: 50%;
+        margin: -1800px 0 0 -600px;
+        background: grey;
+        opacity: 0.4;
+        -webkit-transform: rotateX(90deg) translateZ(-300px) translateY(-600px);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="controls">
+      <h1>Translate</h1>
+      X<input id="translatex" type="range" min="-300" max="300" step="0.01" value="0"><br>
+      Y<input id="translatey" type="range" min="-300" max="300" step="0.01" value="0"><br>
+      Z<input id="translatez" type="range" min="-300" max="300" step="0.01" value="0">
+    
+      <h1>Rotate</h1>
+      X<input id="rotationx" type="range" min="-180" max="180" step="0.01" value="0"><br>
+      Y<input id="rotationy" type="range" min="-180" max="180" step="0.01" value="0"><br>
+      Z<input id="rotationz" type="range" min="-180" max="180" step="0.01" value="0">
+
+      <h1>Perspective</h1>
+      <input id="perspective" type="range" min="300" max="2000" step="1" value="1600">
+
+      <h1>Reverse</h1>
+      <input id="reverse" type="checkbox" value="1">
+    </div>
+
+    <div id="container">
+      <code><pre class="css" id="code">
+      </pre></code>
+      <div id="ground"></div>
+      <div id="planes"></div>
+    </div>
+    <script>
+      var c = document.getElementById('container');
+      var p = document.getElementById('planes');
+      var tX = document.getElementById('translatex');
+      var tY = document.getElementById('translatey');
+      var tZ = document.getElementById('translatez');
+      var rX = document.getElementById('rotationx');
+      var rY = document.getElementById('rotationy');
+      var rZ = document.getElementById('rotationz');
+      var perspect = document.getElementById('perspective');
+      var reverse = document.getElementById('reverse');
+      var code = document.getElementById('code');
+
+      function update() {
+        c.style.webkitPerspective = perspect.value + 'px';
+
+        var trans = 'translateX(' + tX.value + 'px) translateY(' + tY.value + 'px) translateZ(' + tZ.value + 'px)';
+        var rot = 'rotateX(' + rX.value + 'deg) rotateY(' + rY.value + 'deg) rotateZ(' + rZ.value + 'deg)';
+        var trans = reverse.checked ? [rot,trans].join("\n") : [trans,rot].join("\n");
+        p.style.webkitTransform = trans;
+        code.innerHTML = "\n" + trans;
+
+        webkitRequestAnimationFrame(update);
+      }
+
+      update();
+    </script>
+  </body>
+</html>
